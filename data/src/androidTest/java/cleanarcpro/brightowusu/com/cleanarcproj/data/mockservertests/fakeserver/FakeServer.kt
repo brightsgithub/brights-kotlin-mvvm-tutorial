@@ -73,7 +73,20 @@ open class FakeServer {
             if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/user_details.json")) {
                 statusCode = 200
                 jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.user_details)
-            } else {
+            }
+            else if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/past_experiences.json")) {
+                statusCode = 200
+                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.past_experiences)
+            }
+            else if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/professional_summary.json")) {
+                statusCode = 200
+                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.professional_summary)
+            }
+            else if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/topics_of_knowladge.json")) {
+                statusCode = 200
+                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.topics_of_knowladge)
+            }
+            else {
                 statusCode = 500
                 jsonResponse = "OUCH! need to declare our fake json response!!!"
             }

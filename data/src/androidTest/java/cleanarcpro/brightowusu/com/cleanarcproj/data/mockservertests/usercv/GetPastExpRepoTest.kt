@@ -8,7 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import javax.inject.Inject
 
-class PastExperiencesRepositoryTest : FakeServer(){
+class GetPastExpRepoTest : FakeServer() {
 
     @Inject
     lateinit var userRepository: IUserRepository
@@ -27,7 +27,19 @@ class PastExperiencesRepositoryTest : FakeServer(){
 
     @Test
     fun should_get_past_experiences() {
+        val testObserver = userRepository.getPastExperiences(FAKE_USER_ID).test()
 
+        testObserver.awaitTerminalEvent()  // wait for the response
+
+        val onNextEvents = testObserver.values()
+
+        val entityPastExperiences = onNextEvents[0]
+
+        // Make sure onNext was called
+        testObserver.assertNoErrors()
+
+        assert(entityPastExperiences.pastExperiences.size > 0)
+        assert(entityPastExperiences.pastExperiences[0].companyName.equals("asdadas") )
     }
 
 }
