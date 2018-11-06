@@ -5,5 +5,5 @@ import io.reactivex.Observable
 
 interface IUserRepository {
 
-    fun getUser(): Observable<DomainUser>
+    fun getUser(userId: Int): Observable<DomainUser>
 }

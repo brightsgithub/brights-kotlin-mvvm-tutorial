@@ -31,7 +31,7 @@ android {
 
         debug {
             signingConfig signingConfigs.debug
-            buildConfigField 'String', 'BASE_URL', '"https://raw.githubusercontent.com/brightsgithub"'
+            buildConfigField 'String', 'BASE_URL', '"https://raw.githubusercontent.com/brightsgithub/"'
         }
 
         mockserver {

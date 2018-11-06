@@ -28,7 +28,8 @@ class DisplayUserViewModel : ViewModel() {
     }
 
 
-    fun loadUser() {
+    fun loadUser(userId: Int) {
+        userInteractor.setUserId(userId)
         disposables.add(userInteractor.execute()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -70,7 +70,7 @@ open class FakeServer {
             Log.v("***FakeServer***", "PATH IS=" + recordedRequest.path)
 
             // Handle checkEmailRequest
-            if (requestPath.equals("/random-data/master/fake_data/users/1/user_details.json")) {
+            if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/user_details.json")) {
                 statusCode = 200
                 jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.user_details)
             } else {

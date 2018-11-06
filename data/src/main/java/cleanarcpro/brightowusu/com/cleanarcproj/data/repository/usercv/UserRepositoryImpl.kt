@@ -8,8 +8,8 @@ import io.reactivex.Observable
 
 
 class UserRepositoryImpl(val uerCVApi: IUserCVApi) : IUserRepository{
-    override fun getUser(): Observable<DomainUser> {
-        return getUserFromApi()
+    override fun getUser(userId: Int): Observable<DomainUser> {
+        return getUserFromApi(userId)
     }
 
 
@@ -17,8 +17,8 @@ class UserRepositoryImpl(val uerCVApi: IUserCVApi) : IUserRepository{
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private fun getUserFromApi() : Observable<DomainUser> {
-        return uerCVApi.getUserDetails("1")
+    private fun getUserFromApi(userId: Int) : Observable<DomainUser> {
+        return uerCVApi.getUserDetails(userId)
                 .map { entityUser: EntityUser ->  MapEntityUserDetailsToDomain.transform(entityUser)}
 
     }

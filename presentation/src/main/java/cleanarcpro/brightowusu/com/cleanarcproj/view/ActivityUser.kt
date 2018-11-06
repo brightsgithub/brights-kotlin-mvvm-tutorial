@@ -26,7 +26,7 @@ class ActivityUser : AppCompatActivity() {
     }
 
     private fun loadUser() {
-        displayUserViewModel.loadUser()
+        displayUserViewModel.loadUser(1)
     }
 
     fun initDependencies() {

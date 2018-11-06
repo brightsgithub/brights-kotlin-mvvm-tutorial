@@ -7,8 +7,19 @@ import io.reactivex.Observable
 
 class GetUserUseCase (val userRepository: IUserRepository) : IGetUserInteractor {
 
+
+    var userId: Int? = null
+    override fun setUserId(userId: Int) {
+        this.userId = userId
+    }
+
     override fun execute(): Observable<DomainUser> {
-        return userRepository.getUser()
+
+        if(userId == null) {
+            throw IllegalStateException("User id cannot be null")
+        }
+
+        return userRepository.getUser(userId!!)
     }
 
 
