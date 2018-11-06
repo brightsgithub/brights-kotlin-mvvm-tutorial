@@ -2,9 +2,7 @@ package cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models
 
 import com.google.gson.annotations.SerializedName
 
-data class EntityUser(
+data class EntityProfessionalSummary(
         @SerializedName("user_id") val userId: String,
-        @SerializedName("name") val userName: String,
-        @SerializedName("email") val email: String,
-        @SerializedName("phone") val phone: String
+        @SerializedName("professional_summary") val professionalSummary: String
 )

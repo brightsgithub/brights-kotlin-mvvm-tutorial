@@ -17,7 +17,7 @@ class UserRepositoryImpl : IUserRepository{
     }
 
     private fun getUserFromApi() : Observable<DomainUser> {
-        val entityUser = EntityUser("The username", "some@someEmail2.com")
+        val entityUser = EntityUser("The username", "some@someEmail2.com", "", "")
         return Observable.just(DomainUser(entityUser.userName, entityUser.email))
     }
 }
