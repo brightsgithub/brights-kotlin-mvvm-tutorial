@@ -3,8 +3,7 @@ package cleanarcpro.brightowusu.com.cleanarcproj.data.repository
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.EntityUser
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
-import rx.Observable
-
+import io.reactivex.Observable
 
 
 class UserRepositoryImpl : IUserRepository{
@@ -18,7 +17,7 @@ class UserRepositoryImpl : IUserRepository{
     }
 
     private fun getUserFromApi() : Observable<DomainUser> {
-        val entityUser = EntityUser("The username", "email@someemail")
+        val entityUser = EntityUser("The username", "some@someEmail2.com")
         return Observable.just(DomainUser(entityUser.userName, entityUser.email))
     }
 }

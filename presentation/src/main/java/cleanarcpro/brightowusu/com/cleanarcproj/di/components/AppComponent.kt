@@ -11,11 +11,10 @@ import dagger.Component;
 import okhttp3.OkHttpClient;
 
 @Singleton
-@Component(modules = {RepositoryModule.class, NetworkModule.class})
-public interface AppComponent {
+@Component(modules = [RepositoryModule::class, NetworkModule::class])
+interface AppComponent {
 
-    OkHttpClient getOKOkHttpClient();
-
-    IUserRepository getIUserRepository();
+    // Provides a handle on this below class, which can be used by other components
+    fun getIUserRepository() : IUserRepository
 
 }

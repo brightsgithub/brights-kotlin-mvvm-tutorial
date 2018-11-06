@@ -4,6 +4,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt' // keep here and in this order or Dagger will screw up
 
+/**
+ *
+ * Overwrite master with some_branch
+ *
+ git checkout some_branch
+ git merge -s ours master
+ git checkout master
+ git merge some_branch
+ *
+ */
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -58,11 +68,12 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:2.16"
     kapt "com.google.dagger:dagger-android-processor:2.16"
 
+    // RX 2
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
-
-    implementation group: 'io.reactivex', name: 'rxjava', version: '1.0.2'
-
-    implementation 'io.reactivex:rxandroid:1.2.1' // extensions schedulers etc
+    //implementation 'io.reactivex:rxandroid:1.2.1' // extensions schedulers etc
+    //implementation 'com.netflix.rxjava:rxjava-android:0.17.0'
 
     // https://github.com/square/okhttp
     implementation 'com.squareup.okhttp3:okhttp:3.6.0'

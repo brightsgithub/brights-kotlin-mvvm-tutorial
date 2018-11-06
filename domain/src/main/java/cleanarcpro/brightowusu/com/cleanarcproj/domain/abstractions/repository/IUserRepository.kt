@@ -1,7 +1,7 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository
 
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
-import rx.Observable
+import io.reactivex.Observable
 
 interface IUserRepository {
 

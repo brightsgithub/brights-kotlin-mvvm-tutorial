@@ -1,8 +1,8 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors
 
-import rx.Observable
+import io.reactivex.Observable
 
 interface UseCase<T> {
 
-    fun execute(): T
+    fun execute(): Observable<T>
 }
