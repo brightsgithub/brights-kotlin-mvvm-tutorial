@@ -1,6 +1,7 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.di.modules
 
 import cleanarcpro.brightowusu.com.cleanarcproj.BuildConfig
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.RetrofitProvider
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -22,12 +23,7 @@ class RetrofitModule {
     fun providesRetrofit(
             okHttpClient: OkHttpClient,
             gson: Gson) : Retrofit{
-        return Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(BuildConfig.BASE_URL)
-                .client(okHttpClient)
-                .build()
+        return RetrofitProvider.providesRetrofit(okHttpClient, gson)
     }
 
 }

@@ -29,7 +29,6 @@ android {
     }
     buildTypes {
 
-        def localhost = "http://localhost:8080"
 
         release {
             minifyEnabled false
@@ -38,14 +37,12 @@ android {
 
         debug {
             signingConfig signingConfigs.debug
-            buildConfigField 'String', 'BASE_URL', '"https://github.com/brightsgithub"'
         }
 
         mockserver {
             debuggable = true
             minifyEnabled false
             signingConfig signingConfigs.debug
-            buildConfigField 'String', 'BASE_URL', "\"${localhost}\""
         }
     }
 

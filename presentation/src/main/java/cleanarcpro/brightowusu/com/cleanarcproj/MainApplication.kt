@@ -6,10 +6,10 @@ import cleanarcpro.brightowusu.com.cleanarcproj.di.components.DaggerAppComponent
 
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.AppModule
 
-class MainApplication : Application() {
+open class MainApplication : Application() {
 
     private var repositoryComponent: AppComponent? = null
-    private lateinit var appComponent: AppComponent
+    lateinit var appComponent: AppComponent
 
     companion object {
         lateinit var SINGLETON : MainApplication
@@ -24,7 +24,7 @@ class MainApplication : Application() {
         initDagger()
     }
 
-    private fun initDagger() {
+    open fun initDagger() {
         appComponent = DaggerAppComponent
                 .builder()
                 .appModule(AppModule(this)).build()

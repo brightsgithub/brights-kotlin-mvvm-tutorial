@@ -24,6 +24,8 @@ class NetworkUtil {
             return interceptor
         }
 
+
+
         /**
          * Provides a configured Gson object.
          * @return

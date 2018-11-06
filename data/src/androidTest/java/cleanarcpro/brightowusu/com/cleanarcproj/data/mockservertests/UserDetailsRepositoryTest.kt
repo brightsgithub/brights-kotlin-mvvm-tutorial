@@ -1,9 +1,8 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests
 
+import cleanarcpro.brightowusu.com.cleanarcproj.data.TestDependencies
 import cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.fakeserver.FakeServer
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.EntityUser
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
-import io.reactivex.observers.TestObserver
 import org.junit.Before
 import org.junit.Test
 import javax.inject.Inject
@@ -17,6 +16,7 @@ class UserDetailsRepositoryTest : FakeServer(){
     @Before
     fun init() {
         useFakeServer()
+        userRepository = TestDependencies.getConfiguredUserRepository()
     }
 
 

@@ -24,8 +24,6 @@ import okhttp3.mockwebserver.RecordedRequest
 open class FakeServer {
     private var mockWebServer: MockWebServer? = null
     private var delay: Long = 0
-    private val COD_AND_WHITE_FISH_PLP_REQUEST = "/product?filter[category_seo_url]=gb/groceries/meat-fish/cod---white-fish&page[number]=1&page[size]=10&sort="
-    private val WHITE_BREAD_TOASTIE_REQUEST = "/shop/gb/groceries/warburtons-white-sliced-bread--toastie-800g?internal_source=golapp"
 
     fun useFakeServer() {
 
@@ -72,7 +70,7 @@ open class FakeServer {
             Log.v("***FakeServer***", "PATH IS=" + recordedRequest.path)
 
             // Handle checkEmailRequest
-            if (requestPath.equals("/customer/has-account")) {
+            if (requestPath.equals("/random-data/master/fake_data/users/1/user_details.json")) {
                 statusCode = 200
                 jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.user_details)
             } else {
