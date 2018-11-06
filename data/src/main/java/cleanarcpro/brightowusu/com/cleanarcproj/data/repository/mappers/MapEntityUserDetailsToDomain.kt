@@ -13,7 +13,6 @@ class MapEntityUserDetailsToDomain {
                     entityUser.userName,
                     entityUser.email,
                     entityUser.phone)
-
         }
     }
 }

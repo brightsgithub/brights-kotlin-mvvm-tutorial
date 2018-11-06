@@ -10,7 +10,6 @@ import javax.inject.Inject
 
 class PastExperiencesRepositoryTest : FakeServer(){
 
-
     @Inject
     lateinit var userRepository: IUserRepository
     private val FAKE_USER_ID = 1
