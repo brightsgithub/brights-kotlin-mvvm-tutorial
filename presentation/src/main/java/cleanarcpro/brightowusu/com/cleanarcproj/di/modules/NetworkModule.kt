@@ -5,6 +5,7 @@ import android.content.Context
 import javax.inject.Singleton
 
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.NetworkUtil;
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -24,7 +25,12 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(context: Context) : HttpLoggingInterceptor{
-        return NetworkUtil.Companion.provideHttpLoggingInterceptor();
+        return NetworkUtil.Companion.provideHttpLoggingInterceptor()
     }
 
+    @Provides
+    @Singleton
+    fun gson(): Gson {
+        return NetworkUtil.Companion.gson()
+    }
 }

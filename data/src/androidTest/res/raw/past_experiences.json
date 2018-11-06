@@ -1,0 +1,31 @@
+﻿{
+  "past_experiences": [
+    {
+      "id": "1",
+      "company_name": "asdadas",
+      "role_name": "asdasdasdasdas",
+      "dates_start": "asdasdasdasdas",
+      "date_end": "asdasdasdasdas",
+      "responsibilities": "asdasdasdasdas",
+      "company_logo": "someUrl.png"
+    },
+    {
+      "id": "2",
+      "company_name": "asdadas",
+      "role_name": "asdasdasdasdas",
+      "dates_start": "asdasdasdasdas",
+      "date_end": "asdasdasdasdas",
+      "responsibilities": "asdasdasdasdas",
+      "company_logo": "someUrl.png"
+    },
+    {
+      "id": "3",
+      "company_name": "asdadas",
+      "role_name": "asdasdasdasdas",
+      "dates_start": "asdasdasdasdas",
+      "date_end": "asdasdasdasdas",
+      "responsibilities": "asdasdasdasdas",
+      "company_logo": "someUrl.png"
+    }
+  ]
+}

@@ -1,12 +1,13 @@
-package cleanarcpro.brightowusu.com.cleanarcproj.data.repository
+package cleanarcpro.brightowusu.com.cleanarcproj.data.repository.usercv
 
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.mappers.MapEntityUserDetailsToDomain
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.EntityUser
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
 import io.reactivex.Observable
 
 
-class UserRepositoryImpl : IUserRepository{
+class UserRepositoryImpl(val uerCVApi: IUserCVApi) : IUserRepository{
     override fun getUser(): Observable<DomainUser> {
         return getUserFromApi()
     }
@@ -17,7 +18,8 @@ class UserRepositoryImpl : IUserRepository{
     }
 
     private fun getUserFromApi() : Observable<DomainUser> {
-        val entityUser = EntityUser("The username", "some@someEmail2.com", "", "")
-        return Observable.just(DomainUser(entityUser.userName, entityUser.email))
+        return uerCVApi.getUserDetails("1")
+                .map { entityUser: EntityUser ->  MapEntityUserDetailsToDomain.transform(entityUser)}
+
     }
 }

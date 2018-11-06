@@ -36,7 +36,7 @@ class DisplayUserViewModel : ViewModel() {
                         {
                             // onNext()
                             domainUser ->
-                            userLiveData.value = UIUser(domainUser.email,domainUser.userName)
+                            userLiveData.value = UIUser(domainUser.email,domainUser.name)
                         },
                         {
                             // onError()
