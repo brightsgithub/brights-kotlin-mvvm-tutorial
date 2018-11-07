@@ -1,29 +1,28 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors
 
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
-import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
+import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainProfessionalSummary
 import io.reactivex.Observable
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import org.junit.Assert.*
 import java.lang.IllegalStateException
 
-
 @RunWith(MockitoJUnitRunner::class)
-class GetUserUseCaseTest {
+class GetProSummaryUseCaseTest {
 
     @Mock
     private lateinit var userRepository : IUserRepository
-    private lateinit var interactor: IGetUserInteractor
+    private lateinit var interactor: IGetProSummaryInteractor
     private val FAKE_ID = 1
 
     @Before
     fun setup() {
-        interactor = GetUserUseCase(userRepository)
+        interactor = GetProSummaryUseCase(userRepository)
     }
 
     @Test
@@ -33,8 +32,8 @@ class GetUserUseCaseTest {
         interactor.setUserId(FAKE_ID)
 
         // When
-        Mockito.`when`(userRepository.getUser(FAKE_ID))
-                .thenReturn(Observable.just(DomainUser(FAKE_ID,"","","")))
+        Mockito.`when`(userRepository.getProfessionalSummary(FAKE_ID))
+                .thenReturn(Observable.just(DomainProfessionalSummary(FAKE_ID,"")))
 
         val testObserver = interactor.execute().test()
 
@@ -42,14 +41,14 @@ class GetUserUseCaseTest {
 
         val onNextEvents = testObserver.values()
 
-        val domainUser = onNextEvents[0]
+        val summary = onNextEvents[0]
 
         // Make sure onNext was called
         testObserver.assertNoErrors()
 
         // Then
-        assertTrue(domainUser != null)
-        assertTrue(domainUser.userId.equals(FAKE_ID))
+        Assert.assertTrue(summary != null)
+        Assert.assertTrue(summary.userId.equals(FAKE_ID))
     }
 
     @Test(expected = IllegalStateException::class)
