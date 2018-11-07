@@ -5,6 +5,7 @@ import cleanarcpro.brightowusu.com.cleanarcproj.di.components.AppComponent
 import cleanarcpro.brightowusu.com.cleanarcproj.di.components.DaggerAppComponent
 
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.AppModule
+import com.squareup.picasso.Picasso
 
 open class MainApplication : Application() {
 
@@ -15,6 +16,10 @@ open class MainApplication : Application() {
         lateinit var SINGLETON : MainApplication
         fun getAppComponent() : AppComponent {
             return SINGLETON.appComponent
+        }
+
+        fun getPicasso() : Picasso{
+            return SINGLETON.appComponent.getPicasso()
         }
     }
 
@@ -27,8 +32,7 @@ open class MainApplication : Application() {
     open fun initDagger() {
         appComponent = DaggerAppComponent
                 .builder()
-                .appModule(AppModule(this)).build()
+                .appModule(AppModule(this))
+                .build()
     }
-
-
 }

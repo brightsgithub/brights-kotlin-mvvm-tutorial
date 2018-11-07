@@ -3,9 +3,10 @@ package cleanarcpro.brightowusu.com.cleanarcproj.utils
 class Constants {
 
     companion object {
-        val HOME_FRAG_USER_ID_EXTRA = "HOME_FRAG_USER_ID_EXTRA"
+        val USER_ID_EXTRA = "USER_ID_EXTRA"
 
         val HOME_FRAG_TAG_NAME = "HOME_FRAG_TAG_NAME"
+        val PREV_EXP_TAG_NAME = "PREV_EXP_TAG_NAME"
     }
 
 }

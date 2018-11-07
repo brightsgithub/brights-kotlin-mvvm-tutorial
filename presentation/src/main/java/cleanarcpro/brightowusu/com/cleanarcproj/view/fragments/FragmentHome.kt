@@ -2,6 +2,7 @@ package cleanarcpro.brightowusu.com.cleanarcproj.view.fragments
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,13 +48,10 @@ class FragmentHome : BaseFragment() {
     }
 
     private fun initView() {
-        initRecyclerView()
         loadUser()
     }
 
-    private fun initRecyclerView() {
 
-    }
 
     private fun loadUser() {
         displayUserViewModel.loadUser(1)
