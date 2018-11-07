@@ -1,5 +1,5 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models
 
-data class DomainTopicsOfKnowladge(
+data class DomainTopicsOfKnowledge(
        val topicsOfKnowladge: List<DomainTopic>
 )

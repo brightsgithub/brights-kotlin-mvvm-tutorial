@@ -53,6 +53,6 @@ class ActivityUser : AppCompatActivity() {
     }
 
     private fun updateUserInfo(user :UIUser) {
-        data.text = user.email + user.username
+        data.text = user.email + user.name
     }
 }

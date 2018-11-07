@@ -28,8 +28,8 @@ class UserRepositoryImpl(val uerCVApi: IUserCVApi) : IUserRepository{
                 .map { entity: EntityProfessionalSummary ->  MapProSummaryEntityToDomain.transform(entity)}
     }
 
-    override fun getTopicsOfKnowladge(userId: Int): Observable<DomainTopicsOfKnowladge> {
+    override fun getTopicsOfKnowladge(userId: Int): Observable<DomainTopicsOfKnowledge> {
         return uerCVApi.getTopicsOfKnowladge(userId)
-                .map { entity: EntityTopicsOfKnowladge ->  MapEntityTopicsToDomain.transform(entity)}
+                .map { entity: EntityTopicsOfKnowledge ->  MapEntityTopicsToDomain.transform(entity)}
     }
 }

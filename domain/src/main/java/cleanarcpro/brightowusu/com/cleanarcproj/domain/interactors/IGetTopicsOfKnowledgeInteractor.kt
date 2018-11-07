@@ -1,8 +1,8 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors
 
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTopicsOfKnowladge
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTopicsOfKnowledge
 
-interface IGetTopicsOfKnowledgeInteractor : UseCase<DomainTopicsOfKnowladge>{
+interface IGetTopicsOfKnowledgeInteractor : UseCase<DomainTopicsOfKnowledge>{
 
     fun setUserId(userId: Int)
 }

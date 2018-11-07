@@ -1,6 +1,6 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors
 
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTopicsOfKnowladge
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTopicsOfKnowledge
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import io.reactivex.Observable
 
@@ -11,7 +11,7 @@ class GetTopicsOfKnowledgeUseCase(val userRepository: IUserRepository) : IGetTop
         this.userId = userId
     }
 
-    override fun execute(): Observable<DomainTopicsOfKnowladge> {
+    override fun execute(): Observable<DomainTopicsOfKnowledge> {
 
         if(userId == null) {
             throw IllegalStateException("User id cannot be null")

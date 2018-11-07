@@ -3,6 +3,7 @@ package cleanarcpro.brightowusu.com.cleanarcproj.viewmodels
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.mappers.MapDomainUserDetailsToUI
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors.IGetUserInteractor
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
 import cleanarcpro.brightowusu.com.cleanarcproj.models.UIUser
@@ -37,7 +38,7 @@ class DisplayUserViewModel : ViewModel() {
                         {
                             // onNext()
                             domainUser ->
-                            userLiveData.value = UIUser(domainUser.email,domainUser.name)
+                            userLiveData.value = MapDomainUserDetailsToUI.transform(domainUser)
                         },
                         {
                             // onError()

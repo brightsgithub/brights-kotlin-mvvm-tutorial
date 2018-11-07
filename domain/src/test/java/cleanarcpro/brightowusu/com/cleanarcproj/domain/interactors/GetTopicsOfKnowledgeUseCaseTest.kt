@@ -1,7 +1,7 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors
 
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTopic
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTopicsOfKnowladge
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTopicsOfKnowledge
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import io.reactivex.Observable
 import org.junit.Assert
@@ -40,7 +40,7 @@ class GetTopicsOfKnowledgeUseCaseTest {
 
         // When
         Mockito.`when`(userRepository.getTopicsOfKnowladge(FAKE_ID))
-                .thenReturn(Observable.just(DomainTopicsOfKnowladge(topicsList)))
+                .thenReturn(Observable.just(DomainTopicsOfKnowledge(topicsList)))
 
         val testObserver = interactor.execute().test()
 

@@ -17,5 +17,5 @@ interface IUserCVApi {
     fun getProfessionalSummary(@Path("userId") userId: Int): Observable<EntityProfessionalSummary>
 
     @GET("/brightsgithub/random-data/master/fake_data/users/{userId}/topics_of_knowladge.json")
-    fun getTopicsOfKnowladge(@Path("userId") userId: Int): Observable<EntityTopicsOfKnowladge>
+    fun getTopicsOfKnowladge(@Path("userId") userId: Int): Observable<EntityTopicsOfKnowledge>
 }
