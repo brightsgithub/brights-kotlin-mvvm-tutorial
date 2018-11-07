@@ -27,18 +27,26 @@ class PreviousExperiencesAdaptor : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: PreviousExperiencesViewHolder, position: Int) {
-        val previousExp = pastExperiences[position]
-        populateRow(holder, previousExp)
+        val item = pastExperiences[position]
+        populateRow(holder, item)
+        initOnClickListener(holder, item)
     }
 
     private fun populateRow(
             holder: PreviousExperiencesViewHolder,
             item: UIPastExperience) {
 
-
         holder.companyName.text = item.companyName
         holder.roleName.text = item.roleName
         MainApplication.getPicasso().load(item.companyLogo).into(holder.companyLogo)
+    }
+
+    private fun initOnClickListener(
+            holder: PreviousExperiencesViewHolder,
+            item: UIPastExperience) {
+        if (onItemClickListener != null) {
+            holder.itemView.setOnClickListener { view -> onItemClickListener.onItemClick(item) }
+        }
     }
 
     companion object {

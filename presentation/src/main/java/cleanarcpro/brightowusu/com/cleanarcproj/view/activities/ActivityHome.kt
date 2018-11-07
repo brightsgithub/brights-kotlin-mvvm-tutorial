@@ -3,10 +3,8 @@ package cleanarcpro.brightowusu.com.cleanarcproj.view.activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
 import cleanarcpro.brightowusu.com.cleanarcproj.R
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.AppNavigationUtil
-import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.FragmentHome
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.custom_tool_bar.*
 
@@ -21,7 +19,7 @@ class ActivityHome : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                AppNavigationUtil.loadFragmentPreviousExperiences(this, userId)
+                AppNavigationUtil.navigateToFragmentPreviousExperiences(this, userId)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
@@ -41,7 +39,7 @@ class ActivityHome : AppCompatActivity() {
     }
 
     private fun navigateToHomeFragment() {
-        AppNavigationUtil.loadHomeFragment(this, userId )
+        AppNavigationUtil.navigateToHomeFragment(this, userId )
     }
 
     private fun initToolBar() {

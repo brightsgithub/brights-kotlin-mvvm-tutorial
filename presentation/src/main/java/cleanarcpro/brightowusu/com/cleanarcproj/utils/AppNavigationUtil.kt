@@ -15,7 +15,7 @@ class AppNavigationUtil {
 
     companion object {
 
-        fun loadHomeFragment(
+        fun navigateToHomeFragment(
                 activity: AppCompatActivity,
                 userId: Int) {
 
@@ -34,7 +34,7 @@ class AppNavigationUtil {
                     bundle)
         }
 
-        fun loadFragmentPreviousExperiences(
+        fun navigateToFragmentPreviousExperiences(
                 activity: AppCompatActivity,
                 userId: Int) {
 

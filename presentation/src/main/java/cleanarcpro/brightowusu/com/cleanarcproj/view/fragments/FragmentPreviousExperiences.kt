@@ -70,7 +70,7 @@ class FragmentPreviousExperiences : BaseFragment() {
 
         adapter.onItemClickListener = (object : OnItemClickListener<UIPastExperience>{
             override fun onItemClick(item: UIPastExperience) {
-
+                AppNavigationUtil
             }
         })
         previousExpRecyclerView.setAdapter(adapter)

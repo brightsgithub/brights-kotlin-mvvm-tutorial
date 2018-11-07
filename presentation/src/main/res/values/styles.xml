@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="HeaderStyle" parent="android:Widget.TextView">
+    <!--<item name="android:textColor">#F00</item>-->
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>
