@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/companyLogo"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="@dimen/logo_size"
+            android:layout_height="@dimen/logo_size"
             tools:src="@tools:sample/avatars" />
 
         <TextView

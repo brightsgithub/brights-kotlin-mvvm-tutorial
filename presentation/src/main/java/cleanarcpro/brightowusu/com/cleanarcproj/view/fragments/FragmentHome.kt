@@ -2,7 +2,6 @@ package cleanarcpro.brightowusu.com.cleanarcproj.view.fragments
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import cleanarcpro.brightowusu.com.cleanarcproj.MainApplication
 import cleanarcpro.brightowusu.com.cleanarcproj.R
 import cleanarcpro.brightowusu.com.cleanarcproj.di.components.DaggerFragmentHomeComponent
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.FragmentHomeModule
-import cleanarcpro.brightowusu.com.cleanarcproj.models.UIUser
+import cleanarcpro.brightowusu.com.cleanarcproj.models.UIAboutUser
 import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.DisplayUserViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
@@ -54,7 +53,7 @@ class FragmentHome : BaseFragment() {
 
 
     private fun loadUser() {
-        displayUserViewModel.loadUser(1)
+        displayUserViewModel.loadAboutUserInfo(1)
     }
 
 
@@ -72,8 +71,13 @@ class FragmentHome : BaseFragment() {
                 })
     }
 
-    private fun updateUserInfo(user : UIUser) {
-        data.text = user.email + user.name
+    private fun updateUserInfo(uiAboutUser : UIAboutUser) {
+        val user = uiAboutUser.uiUser
+        userName.text = user.name
+        email.text = user.email
+        phone.text = user.phone
+
+        professionalSummary.text = uiAboutUser.uiSummary.professionalSummary
     }
 
 }

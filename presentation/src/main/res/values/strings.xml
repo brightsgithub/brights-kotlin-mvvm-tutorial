@@ -7,4 +7,9 @@
     <string name="responsibilities">Responsibilities</string>
     <string name="duration">Duration</string>
     <string name="technologies_used">Technologies used</string>
+    <string name="professional_summary">Professional Summary</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="bright_owusu_amankwaa">Bright Owusu-Amankwaa</string>
+    <string name="contact">Contact</string>
 </resources>

@@ -5,15 +5,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.activities.ActivityHome">
 
-    <TextView
-        android:id="@+id/data"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        tools:text="@string/title_home"
-        />
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        >
 
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bright_owusu_amankwaa"
+            style="@style/HeaderStyle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/header_spacing"
+            />
+
+        <RelativeLayout
+            android:id="@+id/contact_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_spacing_from_screen_header"
+            >
+
+            <TextView
+                android:id="@+id/contact_info_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contact"
+                style="@style/HeaderStyle"
+                android:layout_marginTop="@dimen/header_spacing"
+                />
+
+
+        <TextView
+            android:id="@+id/phone_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            android:layout_below="@+id/contact_info_header"
+            android:layout_marginTop="@dimen/content_spacing_from_header"
+            />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="0740224442"
+            android:layout_toRightOf="@+id/phone_header"
+            android:layout_marginTop="@dimen/content_spacing_from_header"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/contact_info_header"
+            />
+
+        <TextView
+            android:id="@+id/email_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:layout_below="@+id/phone_header"
+            android:layout_marginTop="@dimen/content_spacing_from_header"
+            />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="BrightsCodesimple@gmail.com"
+            android:layout_toRightOf="@+id/email_header"
+            android:layout_below="@+id/phone"
+            android:layout_marginTop="@dimen/content_spacing_from_header"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/professional_summary_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/professional_summary"
+            style="@style/HeaderStyle"
+            android:layout_marginTop="@dimen/header_spacing"
+            android:layout_below="@+id/contact_info"
+            />
+    <!---->
+        <TextView
+            android:id="@+id/professionalSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Responsibilities included implementation of new features,liaising with business"
+            android:layout_below="@+id/professional_summary_header"
+            android:layout_marginTop="@dimen/content_spacing_from_header"
+            />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
