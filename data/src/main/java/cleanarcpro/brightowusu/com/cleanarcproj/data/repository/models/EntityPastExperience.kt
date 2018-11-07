@@ -3,7 +3,7 @@ package cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models
 import com.google.gson.annotations.SerializedName
 
 data class EntityPastExperience(
-        @SerializedName("id") val id: String,
+        @SerializedName("id") val id: Int,
         @SerializedName("company_name") val companyName: String,
         @SerializedName("role_name") val roleName: String,
         @SerializedName("dates_start") val datesStart: String,

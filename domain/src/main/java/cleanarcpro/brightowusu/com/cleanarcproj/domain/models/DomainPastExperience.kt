@@ -3,7 +3,7 @@ package cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models
 
 
 data class DomainPastExperience(
-        val id: String,
+        val id: Int,
         val companyName: String,
         val roleName: String,
         val datesStart: String,

@@ -10,6 +10,8 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 import org.junit.Assert.*
+import java.lang.IllegalStateException
+
 
 @RunWith(MockitoJUnitRunner::class)
 class GetUserUseCaseTest {
@@ -24,17 +26,19 @@ class GetUserUseCaseTest {
         getUserInteractor = GetUserUseCase(userRepository)
     }
 
-
     @Test
     fun should_get_user_details() {
 
         // GIVEN
+        getUserInteractor.setUserId(FAKE_ID)
 
         // When
         Mockito.`when`(userRepository.getUser(FAKE_ID))
-                .thenReturn(Observable.just(DomainUser(""+FAKE_ID,"","","")))
+                .thenReturn(Observable.just(DomainUser(FAKE_ID,"","","")))
 
         val testObserver = getUserInteractor.execute().test()
+
+        testObserver.awaitTerminalEvent()
 
         val onNextEvents = testObserver.values()
 
@@ -46,6 +50,18 @@ class GetUserUseCaseTest {
         // Then
         assertTrue(domainUser != null)
         assertTrue(domainUser.userId.equals(FAKE_ID))
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun should_throw_error_when_no_id_set() {
+
+        // GIVEN
+
+        // When
+        Mockito.`when`(userRepository.getUser(FAKE_ID))
+                .thenReturn(Observable.just(DomainUser(FAKE_ID,"","","")))
+
+        getUserInteractor.execute().test()
 
     }
 
