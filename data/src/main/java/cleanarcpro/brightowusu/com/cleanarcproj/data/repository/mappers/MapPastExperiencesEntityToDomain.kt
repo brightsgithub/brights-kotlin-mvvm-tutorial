@@ -18,7 +18,8 @@ class MapPastExperiencesEntityToDomain {
                         it.datesStart,
                         it.dateEnd,
                         it.responsibilities,
-                        it.companyLogo)
+                        it.companyLogo,
+                        it.techUsed)
 
                 list.add(pastExp)
             }

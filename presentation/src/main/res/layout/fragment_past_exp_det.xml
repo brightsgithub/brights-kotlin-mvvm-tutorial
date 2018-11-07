@@ -39,72 +39,110 @@
             android:layout_marginLeft="8dp"
             />
 
-        <RelativeLayout
-            android:id="@+id/duration_container"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/companyLogo"
-            android:layout_marginTop="@dimen/header_spacing"
+            android:scrollbars="vertical"
             >
-            <TextView
-                android:id="@+id/duration"
+
+            <LinearLayout
+                android:id="@+id/main_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/duration"
-                style="@style/HeaderStyle"
-                />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
 
-            <TextView
-                android:id="@+id/startDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="01/01/2015"
-                android:layout_below="@+id/duration"
+                <RelativeLayout
+                    android:id="@+id/duration_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-                />
+                    android:layout_marginTop="@dimen/header_spacing"
+                    >
+                    <TextView
+                        android:id="@+id/duration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/duration"
+                        style="@style/HeaderStyle"
+                        />
+
+                    <TextView
+                        android:id="@+id/startDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="01/01/2015"
+                        android:layout_below="@+id/duration"
+
+                        />
 
 
-            <TextView
-                android:id="@+id/sep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" - "
-                android:layout_toRightOf="@+id/startDate"
-                android:layout_below="@+id/duration"
-                />
+                    <TextView
+                        android:id="@+id/sep"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" - "
+                        android:layout_toRightOf="@+id/startDate"
+                        android:layout_below="@+id/duration"
+                        />
 
 
-            <TextView
-                android:id="@+id/endDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="01/01/2016"
-                android:layout_toRightOf="@+id/sep"
-                android:layout_below="@+id/duration"
-                />
+                    <TextView
+                        android:id="@+id/endDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="01/01/2016"
+                        android:layout_toRightOf="@+id/sep"
+                        android:layout_below="@+id/duration"
+                        />
 
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/responsibilities_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/responsibilities"
+                    android:layout_below="@+id/duration_container"
+                    style="@style/HeaderStyle"
+                    android:layout_marginTop="@dimen/header_spacing"
+                    />
+
+                <TextView
+                    android:id="@+id/responsibilities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Responsibilities included implementation of new features,liaising with business"
+                    android:layout_below="@+id/responsibilities_header"
+                    android:layout_marginTop="@dimen/content_spacing_from_header"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tech_used_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/technologies_used"
+                    android:layout_below="@+id/responsibilities"
+                    style="@style/HeaderStyle"
+                    android:layout_marginTop="@dimen/header_spacing"
+                    />
+
+                <TextView
+                    android:id="@+id/techUsed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Responsibilities included implementation of new features,liaising with business"
+                    android:layout_below="@+id/tech_used_header"
+                    android:layout_marginTop="@dimen/content_spacing_from_header"
+                    />
+
+            </LinearLayout>
+        </ScrollView>
         </RelativeLayout>
 
 
-        <TextView
-            android:id="@+id/responsibilities_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/responsibilities"
-            android:layout_below="@+id/duration_container"
-            style="@style/HeaderStyle"
-            android:layout_marginTop="@dimen/header_spacing"
-            />
-
-        <TextView
-            android:id="@+id/responsibilities"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Responsibilities included implementation of new features,liaising with business"
-            android:layout_below="@+id/responsibilities_header"
-            android:layout_marginTop="@dimen/content_spacing_from_header"
-            />
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

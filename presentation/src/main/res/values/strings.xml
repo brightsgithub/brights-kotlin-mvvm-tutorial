@@ -6,4 +6,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="responsibilities">Responsibilities</string>
     <string name="duration">Duration</string>
+    <string name="technologies_used">Technologies used</string>
 </resources>

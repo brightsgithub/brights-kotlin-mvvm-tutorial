@@ -1,14 +1,20 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.utils
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import cleanarcpro.brightowusu.com.cleanarcproj.R
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExperience
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.Constants.Companion.HOME_FRAG_TAG_NAME
+import cleanarcpro.brightowusu.com.cleanarcproj.utils.Constants.Companion.PREV_EXP_DET_TAG_NAME
+import cleanarcpro.brightowusu.com.cleanarcproj.utils.Constants.Companion.PREV_EXP_EXTRA
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.Constants.Companion.PREV_EXP_TAG_NAME
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.Constants.Companion.USER_ID_EXTRA
 import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.FragmentHome
+import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.FragmentPreviousExpDetail
 import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.FragmentPreviousExperiences
 
 class AppNavigationUtil {
@@ -52,6 +58,23 @@ class AppNavigationUtil {
                     getFragmentTransaction(activity),
                     fragment,
                     PREV_EXP_TAG_NAME,
+                    bundle)
+        }
+
+        fun navigateToFragmentPreviousExperienceDetail(
+                activity: FragmentActivity,
+                uiPastExperience: UIPastExperience) {
+
+            activity as AppCompatActivity
+
+            val bundle = Bundle()
+            bundle.putParcelable(PREV_EXP_EXTRA, uiPastExperience)
+
+            val fragment = FragmentPreviousExpDetail()
+            addFragmentToView(
+                    getFragmentTransaction(activity),
+                    fragment,
+                    PREV_EXP_DET_TAG_NAME,
                     bundle)
         }
 

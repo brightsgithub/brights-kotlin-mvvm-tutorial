@@ -9,5 +9,6 @@ data class DomainPastExperience(
         val datesStart: String,
         val dateEnd: String,
         val responsibilities: String,
-        val companyLogo: String
+        val companyLogo: String,
+        val techUsed: String
 )

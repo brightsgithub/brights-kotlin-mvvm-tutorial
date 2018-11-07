@@ -9,5 +9,6 @@ data class EntityPastExperience(
         @SerializedName("dates_start") val datesStart: String,
         @SerializedName("date_end") val dateEnd: String,
         @SerializedName("responsibilities") val responsibilities: String,
-        @SerializedName("company_logo") val companyLogo: String
+        @SerializedName("company_logo") val companyLogo: String,
+        @SerializedName("tech_used") val techUsed: String
 )
