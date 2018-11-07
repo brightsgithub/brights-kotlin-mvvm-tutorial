@@ -4,7 +4,7 @@ import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTop
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import io.reactivex.Observable
 
-class GetTopicsOfKnowladgeUseCase(val userRepository: IUserRepository) : IGetTopicsOfKnowladgeInteractor{
+class GetTopicsOfKnowledgeUseCase(val userRepository: IUserRepository) : IGetTopicsOfKnowledgeInteractor{
 
     var userId: Int? = null
     override fun setUserId(userId: Int) {
