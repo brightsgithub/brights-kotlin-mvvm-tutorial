@@ -73,6 +73,7 @@ class FragmentHome : BaseFragment() {
     private fun modifyContainer() {
         baseFragmentCallBack.showFab()
         baseFragmentCallBack.hideUpButton()
+        baseFragmentCallBack.setToolBarTitle(getString(R.string.app_name))
     }
 
     override fun showLoadingState(view: View) {
