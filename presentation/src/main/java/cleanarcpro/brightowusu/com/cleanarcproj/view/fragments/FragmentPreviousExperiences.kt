@@ -3,7 +3,6 @@ package cleanarcpro.brightowusu.com.cleanarcproj.view.fragments
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,6 +54,9 @@ class FragmentPreviousExperiences : BaseFragment() {
     }
 
     private fun initView() {
+        baseFragmentCallBack.hideFab()
+        baseFragmentCallBack.showUpButton()
+        baseFragmentCallBack.setToolBarTitle(getString(R.string.prev_exp))
         initRecyclerView()
         loadUser()
     }
@@ -77,7 +79,7 @@ class FragmentPreviousExperiences : BaseFragment() {
     }
 
     private fun loadUser() {
-        showLoadingState()
+        showLoadingState(progress_bar)
         viewModel.loadPastExperiences(1)
     }
 
@@ -98,7 +100,7 @@ class FragmentPreviousExperiences : BaseFragment() {
 
     private fun displayPastExpList(pastExperiencesWrapper : UIPastExperiences) {
         adapter.pastExperiences = pastExperiencesWrapper.pastExperiences
-        hideLoadingState()
+        hideLoadingState(progress_bar)
         showList()
     }
 
@@ -112,17 +114,5 @@ class FragmentPreviousExperiences : BaseFragment() {
         if (isRemoving)
             return
         previousExpRecyclerView.visibility = View.GONE
-    }
-
-    private fun showLoadingState() {
-        if (isRemoving)
-            return
-        progress_bar.visibility = View.VISIBLE
-    }
-
-    private fun hideLoadingState() {
-        if (isRemoving)
-            return
-        progress_bar.visibility = View.GONE
     }
 }

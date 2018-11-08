@@ -6,16 +6,18 @@
     tools:context=".view.activities.ActivityHome">
 
     <RelativeLayout
+        android:id="@+id/home_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        android:visibility="gone"
         >
 
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bright_owusu_amankwaa"
+            tools:text="@string/bright_owusu_amankwaa"
             style="@style/HeaderStyle"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/header_spacing"
@@ -25,7 +27,7 @@
             android:id="@+id/contact_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_spacing_from_screen_header"
+            android:layout_below="@+id/userName"
             >
 
             <TextView
@@ -89,7 +91,7 @@
             android:layout_marginTop="@dimen/header_spacing"
             android:layout_below="@+id/contact_info"
             />
-    <!---->
+
         <TextView
             android:id="@+id/professionalSummary"
             android:layout_width="wrap_content"
@@ -99,5 +101,7 @@
             android:layout_marginTop="@dimen/content_spacing_from_header"
             />
     </RelativeLayout>
+
+    <include layout="@layout/progress_layout"/>
 
 </android.support.constraint.ConstraintLayout>

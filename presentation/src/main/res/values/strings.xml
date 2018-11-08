@@ -12,4 +12,6 @@
     <string name="email">Email</string>
     <string name="bright_owusu_amankwaa">Bright Owusu-Amankwaa</string>
     <string name="contact">Contact</string>
+    <string name="title_activity_home_new">ActivityHomeNew</string>
+    <string name="prev_exp">Previous Experiences</string>
 </resources>

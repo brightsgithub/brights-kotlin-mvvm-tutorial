@@ -34,6 +34,9 @@ class FragmentPreviousExpDetail : BaseFragment() {
     }
 
     private fun initView() {
+        baseFragmentCallBack.hideFab()
+        baseFragmentCallBack.showUpButton()
+        baseFragmentCallBack.setToolBarTitle(uiPastExperience.companyName)
         displayDetail()
     }
 

@@ -12,9 +12,11 @@ import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.FragmentHomeModule
 import cleanarcpro.brightowusu.com.cleanarcproj.models.UIAboutUser
 import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.DisplayUserViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.progress_layout.*
 import javax.inject.Inject
 
 class FragmentHome : BaseFragment() {
+
 
     @Inject
     lateinit var displayUserViewModel: DisplayUserViewModel
@@ -47,10 +49,21 @@ class FragmentHome : BaseFragment() {
     }
 
     private fun initView() {
+        baseFragmentCallBack.showFab()
+        baseFragmentCallBack.hideUpButton()
+        showLoadingState(progress_bar)
         loadUser()
     }
 
+    override fun showLoadingState(view: View) {
+        home_container.visibility = View.GONE
+        super.showLoadingState(view)
+    }
 
+    override fun hideLoadingState(view: View) {
+        home_container.visibility = View.VISIBLE
+        super.hideLoadingState(view)
+    }
 
     private fun loadUser() {
         displayUserViewModel.loadAboutUserInfo(1)
@@ -68,6 +81,7 @@ class FragmentHome : BaseFragment() {
                 this,
                 Observer { user ->
                     updateUserInfo(user!!)
+                    hideLoadingState(progress_bar)
                 })
     }
 
@@ -79,5 +93,4 @@ class FragmentHome : BaseFragment() {
 
         professionalSummary.text = uiAboutUser.uiSummary.professionalSummary
     }
-
 }
