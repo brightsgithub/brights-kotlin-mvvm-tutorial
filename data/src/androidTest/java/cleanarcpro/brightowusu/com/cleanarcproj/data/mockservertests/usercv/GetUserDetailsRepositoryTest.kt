@@ -1,5 +1,6 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.usercv
 
+import android.support.test.InstrumentationRegistry
 import cleanarcpro.brightowusu.com.cleanarcproj.data.TestDependencies
 import cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.fakeserver.FakeServer
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
@@ -18,7 +19,7 @@ class GetUserDetailsRepositoryTest : FakeServer(){
 
     @Before
     fun init() {
-        useFakeServer()
+        useFakeServer(InstrumentationRegistry.getInstrumentation().context)
         userRepository = TestDependencies.getConfiguredUserRepository()
     }
 

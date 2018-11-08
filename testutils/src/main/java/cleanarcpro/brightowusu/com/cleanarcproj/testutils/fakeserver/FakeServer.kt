@@ -1,7 +1,7 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.fakeserver
 
+import android.content.Context
 import android.net.Uri
-import android.support.test.InstrumentationRegistry.getInstrumentation
 import android.util.Log
 
 
@@ -24,9 +24,10 @@ import okhttp3.mockwebserver.RecordedRequest
 open class FakeServer {
     private var mockWebServer: MockWebServer? = null
     private var delay: Long = 0
+    private var context: Context?=null
 
-    fun useFakeServer() {
-
+    fun useFakeServer(context: Context) {
+        this.context = context
         // Create a MockWebServer. These are lean enough that you can create a new
         // instance for every unit test.
         mockWebServer = MockWebServer()
@@ -72,19 +73,19 @@ open class FakeServer {
             // Handle checkEmailRequest
             if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/user_details.json")) {
                 statusCode = 200
-                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.user_details)
+                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.testutils.R.raw.user_details)
             }
             else if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/past_experiences.json")) {
                 statusCode = 200
-                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.past_experiences)
+                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.testutils.R.raw.past_experiences)
             }
             else if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/professional_summary.json")) {
                 statusCode = 200
-                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.professional_summary)
+                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.testutils.R.raw.professional_summary)
             }
             else if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/topics_of_knowladge.json")) {
                 statusCode = 200
-                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.data.test.R.raw.topics_of_knowladge)
+                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.testutils.R.raw.topics_of_knowladge)
             }
             else {
                 statusCode = 500
@@ -135,7 +136,7 @@ open class FakeServer {
 
     // https://stackoverflow.com/questions/41000584/best-way-to-use-bufferedreader-in-kotlin
     private fun getMockedResponseByFile(res: Int): String {
-        val inputStream = getInstrumentation().getContext().getResources().openRawResource(res)
+        val inputStream = context!!.getResources().openRawResource(res)
         val allText = inputStream.bufferedReader().use(BufferedReader::readText)
         return allText
     }

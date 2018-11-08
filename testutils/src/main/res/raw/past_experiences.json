@@ -1,0 +1,87 @@
+﻿{
+  "past_experiences": [
+    {
+      "id": 1,
+      "company_name": "Sainsbury’s",
+      "role_name": "Android senior developer (Contract)",
+      "dates_start": "JUN 2018",
+      "date_end": "OCT 2018",
+      "responsibilities": "
+•	Responsible for setting up and implementing the CI pipeline server Jenkins to run unit, unit instumented, UI instumented and mock tests and create a artifacts.
+
+•	Going forward all new code was written in Kotlin.
+
+•	Suggested and implemented going forward to use RXJava2, Retrofit, Clean Architecture with MVVM, Architecture components such as Live Data, Room and View Models with a TDD approach.
+
+•	Advised on the benefits of OKHTTP MockWebServer for testing and then implemented it.
+
+•	Responsible for App release management.
+
+•	UX/UI Review. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
+
+•	Day to day maintenance of the app i.e. new features, bug fixes UI updates.
+
+•	Also did some work on web services using GO.
+",
+      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/sains_gol_logo.png",
+      "tech_used": "Working in an agile scrum environment,
+      Kotlin, Architecture components Room, Live Data & View Model. TDD (Test Driven Development), Pivotal Tracker, using MVVM Clean Architecture. RXAndroid2/Java, MockWebServer, Retrofit 2, Dagger 2, Material Design approach, Picasso. Testing involved all 3 types i.e Unit tests for behaviour, Unit Instrumentation tests testing all via device which was non UI, Espresso UI tests for UI testing, Mockito, & all the standard Android classes such as Fragments, Broadcast receivers, Activities etc."
+    },
+    {
+      "id": 2,
+      "company_name": "BigHand ",
+      "role_name": "Android senior developer (Contract)",
+      "dates_start": "AUG 2017",
+      "date_end": "JUN 2018",
+      "responsibilities": "
+      My time at BigHand can be summarised into 3 main areas:
+1)	Continue to implement the new version of the app using the robust Uncle Bob’s Clean Architecture including MVP.
+2)	Brining the app into feature parity with the iOS version, but doing this within the Material Design guidelines.
+3)	Implementing new features.
+
+•	Implemented Android Enterprise (Android for work)
+
+•	Implemented various tablet designs including master detail layout for tablet.
+
+•	Advised on the benefits of OKHTTP MockWebServer for testing and then implemented it.
+
+•	UX/UI Review. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
+
+•	Bug fixes including long existing RXAndroid issues which were solved.
+",
+      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/bighand_logo.png",
+      "tech_used":"Working in an agile scrum environment,
+TDD (Test Driven Development), TFS, using MVP Clean Architecture approach as inspired by Uncle Bob. RXAndroid/Java, GreenDAO, MockWebServer, Android Enterprise, ButterKnife, Retrofit 2, Dagger 2, Material Design approach, Picasso. Testing involved all 3 types i.e Unit tests for behaviour, Unit Instrumentation tests testing all via device which was non UI, Espresso UI tests for UI testing, Mockito, Powermock & all the standard Android classes such as Fragments, Broadcast receivers, Activities etc.
+"
+    },
+
+
+
+
+
+
+    {
+      "id": 3,
+      "company_name": "Avios ",
+      "role_name": "Android lead development role (Contract)",
+      "dates_start": "JUN 2016",
+      "date_end": "JULY 2017",
+      "responsibilities": "•	Responsible for the Android version of the Avios app.
+
+•	Responsible for securing the app in terms of implementing certificate pinning, OAuth2 login (Retrofit’s Authenticator & Interceptor), Obfuscation, Root detection, AES 256 Encryption (Encryption key generated runtime)
+
+•	Implemented background video in earlier version along with screen capture of video using RenderScript.
+
+•	UX/UI meetings. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
+
+•	Day to day tasks of implementing new features/screens, bug fixing etc.
+
+•	Responsible for release cycle of the app using Alpha & Beta channels. Tagging, app versioning all re-implemented.
+
+•	Interviewing/hiring Android developers
+",
+      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/avios_logo.png",
+      "tech_used":"Technologies used: Working in an agile scrum environment, TDD (Test Driven Development), JIRA, using MVP Clean Architecture approach as inspired by Uncle Bob. RXAndroid/Java, ButterKnife, Retrofit 2, Dagger 2, Material Design approach, Picasso. Testing involved all 3 types i.e Unit tests for behaviour, Unit Instrumentation tests testing all via device which was non UI, Espresso UI tests for UI testing, Buddy build, Mockito, Powermock & all the standard Android classes such as Fragments, Broadcast receivers, Activities etc. BitBucket & Buddy build. "
+    }
+  ]
+}

@@ -16,8 +16,8 @@ apply plugin: 'kotlin-kapt' // keep here and in this order or Dagger will screw 
  */
 android {
 
+    //testBuildType obtainTestBuildType()
     testBuildType "mockserver"
-
     compileSdkVersion 27
     defaultConfig {
         applicationId "cleanarcpro.brightowusu.com.cleanarcproj"
@@ -57,6 +57,22 @@ android {
 
 }
 
+
+/*
+ * Change the build type you test with using
+ * ./gradlew connectedAndroidTest -PtestBuildType=release
+ * N.B running tests in android studio will ignore this
+ */
+def obtainTestBuildType() {
+    def result = "debug"
+
+    if (project.hasProperty("testBuildType")) {
+        result = project.getProperties().get("testBuildType")
+    }
+
+    result
+}
+
 dependencies {
 
     def supportLibVersion = '27.1.1'
@@ -69,6 +85,7 @@ dependencies {
     // to presentation, domain and data. As an Android workaround we point the presentation layer to the
     // data layer so that dependicies can be provided
     implementation project(':data')
+    androidTestCompile project(':testutils')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:${supportLibVersion}"
