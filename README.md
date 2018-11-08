@@ -1,4 +1,4 @@
-Bright’s Kotlin Clean Architecture MVVM/RXAJava2/Dagger2 Tutorial
+Bright’s Kotlin Clean Architecture MVVM/RXJava2/Dagger2 Tutorial
 ------------------------------------------------------------
 
 Personal CV Sample app
