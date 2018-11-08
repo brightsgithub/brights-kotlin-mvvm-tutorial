@@ -12,7 +12,7 @@ import javax.inject.Inject
 class GetUserDetailsRepositoryTest : FakeServer(){
 
 
-    @Inject
+    //@Inject
     lateinit var userRepository: IUserRepository
     private val FAKE_USER_ID = 1
 
