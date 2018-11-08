@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExperience
 
 /**
  * Things most Fragments care about
@@ -22,6 +23,8 @@ abstract class BaseFragment : Fragment() {
      * Init dagger dependencies here
      */
     abstract fun initDependencies()
+
+    abstract fun onBackPressedShouldWeCloseActivity() : Boolean
 
     interface BaseFragmentCallBack {
         /**
@@ -48,6 +51,11 @@ abstract class BaseFragment : Fragment() {
          * Sets the toolbar title.
          */
         fun setToolBarTitle(title: String)
+
+        /**
+         * Navigate to detail activity
+         */
+        fun navigateToFragmentPreviousExperienceDetail(item: UIPastExperience)
     }
 
     override fun onAttach(context: Context) {
@@ -55,7 +63,7 @@ abstract class BaseFragment : Fragment() {
         if (context is BaseFragmentCallBack) {
             baseFragmentCallBack = context
         } else {
-            throw IllegalStateException("Activity must implement FragmentCurrencyListCallback")
+            throw IllegalStateException("Activity must implement BaseFragmentCallBack")
         }
     }
 

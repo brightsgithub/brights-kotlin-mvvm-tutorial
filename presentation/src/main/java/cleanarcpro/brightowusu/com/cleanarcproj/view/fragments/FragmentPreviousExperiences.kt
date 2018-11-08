@@ -88,7 +88,7 @@ class FragmentPreviousExperiences : BaseFragment() {
 
         adapter.onItemClickListener = (object : OnItemClickListener<UIPastExperience>{
             override fun onItemClick(item: UIPastExperience) {
-                AppNavigationUtil.navigateToFragmentPreviousExperienceDetail(activity!!, item)
+                baseFragmentCallBack.navigateToFragmentPreviousExperienceDetail(item)
             }
         })
         previousExpRecyclerView.adapter = adapter
@@ -141,5 +141,9 @@ class FragmentPreviousExperiences : BaseFragment() {
         if (isRemoving)
             return
         previousExpRecyclerView.visibility = View.GONE
+    }
+
+    override fun onBackPressedShouldWeCloseActivity() :Boolean {
+        return false
     }
 }

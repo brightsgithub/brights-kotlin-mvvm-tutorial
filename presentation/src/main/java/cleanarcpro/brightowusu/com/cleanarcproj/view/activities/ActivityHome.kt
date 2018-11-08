@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import cleanarcpro.brightowusu.com.cleanarcproj.R
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExperience
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.AppNavigationUtil
 import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.BaseFragment
 import kotlinx.android.synthetic.main.activity_home_new.*
@@ -76,5 +77,21 @@ class ActivityHome : AppCompatActivity() , BaseFragment.BaseFragmentCallBack {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun navigateToFragmentPreviousExperienceDetail(item: UIPastExperience) {
+        AppNavigationUtil.navigateToFragmentPreviousExperienceDetail(this, item)
+    }
+
+    override fun onBackPressed() {
+        val f = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        f as BaseFragment
+        if(f.onBackPressedShouldWeCloseActivity()) {
+            super.onBackPressed()
+            finish()
+        } else {
+            super.onBackPressed()
+        }
+
     }
 }

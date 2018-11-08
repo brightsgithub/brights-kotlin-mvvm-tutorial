@@ -72,4 +72,8 @@ class FragmentPreviousExpDetail : BaseFragment() {
     override fun initDependencies() {
         // none
     }
+
+    override fun onBackPressedShouldWeCloseActivity(): Boolean {
+        return false
+    }
 }

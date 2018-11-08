@@ -1,6 +1,7 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.view.fragments
 
 import android.arch.lifecycle.Observer
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,9 +23,13 @@ import javax.inject.Inject
  */
 class FragmentHome : BaseFragment() {
 
-
     @Inject
     lateinit var displayUserViewModel: DisplayUserViewModel
+
+    private lateinit var homeFragmentCallBack : HomeFragmentCallBack
+    private interface HomeFragmentCallBack {
+        fun closeApp()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,5 +123,9 @@ class FragmentHome : BaseFragment() {
         phone.text = user.phone
 
         professionalSummary.text = uiAboutUser.uiSummary.professionalSummary
+    }
+
+    override fun onBackPressedShouldWeCloseActivity(): Boolean {
+        return true
     }
 }
