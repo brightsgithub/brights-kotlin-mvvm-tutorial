@@ -93,5 +93,6 @@ Libraries used
 * RxJava2 - So the app is reactive/asynchronous  and can make use of streams
 
 
-![alt tag](https://github.com/brightsgithub/brights-mvp-tutorial/blob/master/comics_list.png)
-![alt tag](https://github.com/brightsgithub/brights-mvp-tutorial/blob/master/comic_detail.png)
+![alt tag](https://github.com/brightsgithub/brights-kotlin-mvvm-tutorial/blob/master/screen_shot_1.png)
+![alt tag](https://github.com/brightsgithub/brights-kotlin-mvvm-tutorial/blob/master/screen_shot_2.png)
+![alt tag](https://github.com/brightsgithub/brights-kotlin-mvvm-tutorial/blob/master/screen_shot_3.png)
