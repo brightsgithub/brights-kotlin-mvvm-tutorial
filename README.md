@@ -76,9 +76,6 @@ How to Test (Command line or Jenkins)
 3) This runs 'UI Instrumented' tests within the Presentation Layer against a MOCK server.
 ./gradlew presentation:connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.package=cleanarcpro.brightowusu.com.cleanarcproj -PtestBuildType=mockserver
 
-4) This runs ALL 3 of the above in sequence
-./gradlew presentation:connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.package=cleanarcpro.brightowusu.com.cleanarcproj -PtestBuildType=mockserver :domain:test data:connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.package=cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.usercv -PtestBuildType=mockserver
-
 (to test in Android studio, be sure to select the mockserver variant for all modules)
 
 Libraries used
