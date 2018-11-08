@@ -16,8 +16,8 @@ apply plugin: 'kotlin-kapt' // keep here and in this order or Dagger will screw 
  */
 android {
 
-    //testBuildType obtainTestBuildType()
-    testBuildType "mockserver"
+    testBuildType obtainTestBuildType()
+
     compileSdkVersion 27
     defaultConfig {
         applicationId "cleanarcpro.brightowusu.com.cleanarcproj"
@@ -64,7 +64,7 @@ android {
  * N.B running tests in android studio will ignore this
  */
 def obtainTestBuildType() {
-    def result = "debug"
+    def result = "mockserver"
 
     if (project.hasProperty("testBuildType")) {
         result = project.getProperties().get("testBuildType")

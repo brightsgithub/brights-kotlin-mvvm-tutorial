@@ -7,7 +7,8 @@ apply plugin: 'kotlin-kapt'
 
 android {
 
-    testBuildType "mockserver"
+    //testBuildType "mockserver"
+    testBuildType obtainTestBuildType()
 
     compileSdkVersion 27
     defaultConfig {
@@ -42,6 +43,21 @@ android {
         }
 
     }
+}
+
+/*
+ * Change the build type you test with using
+ * ./gradlew connectedAndroidTest -PtestBuildType=release
+ * N.B running tests in android studio will ignore this
+ */
+def obtainTestBuildType() {
+    def result = "mockserver"
+
+    if (project.hasProperty("testBuildType")) {
+        result = project.getProperties().get("testBuildType")
+    }
+
+    result
 }
 
 dependencies {
