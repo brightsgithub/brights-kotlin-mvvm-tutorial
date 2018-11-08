@@ -38,7 +38,7 @@ class GetSummaryRepoTest : FakeServer(){
         // Make sure onNext was called
         testObserver.assertNoErrors()
 
-        assert(professionalSummary.professionalSummary.equals("some data"))
+        assert(professionalSummary.professionalSummary.startsWith("I am an experienced Java developer with"))
     }
 
 }

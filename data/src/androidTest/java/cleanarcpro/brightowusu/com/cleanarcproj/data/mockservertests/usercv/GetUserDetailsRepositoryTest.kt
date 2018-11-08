@@ -41,7 +41,9 @@ class GetUserDetailsRepositoryTest : FakeServer(){
         // Make sure onNext was called
         testObserver.assertNoErrors()
 
-        assert("bright".equals(entityUserDetails.name))
+        assert("Bright Owusu-Amankwaa".equals(entityUserDetails.name))
+        assert("07402244442".equals(entityUserDetails.phone))
+        assert("brightsCodeSimple@gmail.com".equals(entityUserDetails.email))
     }
 
     @Test

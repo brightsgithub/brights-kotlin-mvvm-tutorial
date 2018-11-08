@@ -39,7 +39,7 @@ class GetPastExpRepoTest : FakeServer() {
         testObserver.assertNoErrors()
 
         assert(entityPastExperiences.pastExperiences.size > 0)
-        assert(entityPastExperiences.pastExperiences[0].companyName.equals("asdadas") )
+        assert(entityPastExperiences.pastExperiences[0].companyName.equals("Sainsbury’s") )
     }
 
 }
