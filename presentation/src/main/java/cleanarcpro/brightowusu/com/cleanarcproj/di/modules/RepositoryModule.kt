@@ -9,7 +9,9 @@ import dagger.Provides;
 import retrofit2.Retrofit
 
 /**
+ * Repository Implementations.
  *
+ * Created by Bright Owusu-Amankwaa
  */
 @Module(includes = [AppModule::class])
 class RepositoryModule {

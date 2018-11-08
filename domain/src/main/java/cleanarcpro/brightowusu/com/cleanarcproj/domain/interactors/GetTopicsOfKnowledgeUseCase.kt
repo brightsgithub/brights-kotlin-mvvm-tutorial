@@ -4,6 +4,11 @@ import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTop
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import io.reactivex.Observable
 
+/**
+ * Get the users topics of knowladge and perform any business logic here if needed.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 class GetTopicsOfKnowledgeUseCase(val userRepository: IUserRepository) : IGetTopicsOfKnowledgeInteractor{
 
     var userId: Int? = null

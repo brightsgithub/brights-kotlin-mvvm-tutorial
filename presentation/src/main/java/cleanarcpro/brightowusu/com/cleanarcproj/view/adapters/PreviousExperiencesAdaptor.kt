@@ -10,7 +10,9 @@ import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExp
 import cleanarcpro.brightowusu.com.cleanarcproj.listeners.OnItemClickListener
 import kotlinx.android.synthetic.main.row_past_experience.view.*
 
-
+/**
+ * Adaptor for displaying list of experiences.
+ */
 class PreviousExperiencesAdaptor : RecyclerView.Adapter<
         PreviousExperiencesAdaptor.Companion.PreviousExperiencesViewHolder>(){
 

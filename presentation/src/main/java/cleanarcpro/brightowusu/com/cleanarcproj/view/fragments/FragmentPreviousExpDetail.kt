@@ -10,6 +10,11 @@ import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExp
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.Constants.Companion.PREV_EXP_EXTRA
 import kotlinx.android.synthetic.main.fragment_past_exp_det.*
 
+/**
+ * Displays the Previous experience in detail.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 class FragmentPreviousExpDetail : BaseFragment() {
 
     private lateinit var uiPastExperience: UIPastExperience
@@ -33,14 +38,27 @@ class FragmentPreviousExpDetail : BaseFragment() {
         initView()
     }
 
+    /**
+     * Init View
+     */
     private fun initView() {
+        modifyContainer()
+        displayPreviousExperienceDetail()
+    }
+
+    /**
+     * Changes title, fab, up button etc
+     */
+    private fun modifyContainer() {
         baseFragmentCallBack.hideFab()
         baseFragmentCallBack.showUpButton()
         baseFragmentCallBack.setToolBarTitle(uiPastExperience.companyName)
-        displayDetail()
     }
 
-    private fun displayDetail() {
+    /**
+     * Displays the previous experience detail
+     */
+    private fun displayPreviousExperienceDetail() {
         companyName.text = uiPastExperience.companyName
         roleName.text = uiPastExperience.roleName
         MainApplication.getPicasso().load(uiPastExperience.companyLogo).into(companyLogo)

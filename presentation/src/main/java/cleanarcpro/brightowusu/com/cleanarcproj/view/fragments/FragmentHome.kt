@@ -15,6 +15,11 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.progress_layout.*
 import javax.inject.Inject
 
+/**
+ * Displays the home screen.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 class FragmentHome : BaseFragment() {
 
 
@@ -48,11 +53,21 @@ class FragmentHome : BaseFragment() {
         initView()
     }
 
+    /**
+     * Performs view setup.
+     */
     private fun initView() {
-        baseFragmentCallBack.showFab()
-        baseFragmentCallBack.hideUpButton()
+        modifyContainer()
         showLoadingState(progress_bar)
         loadUser()
+    }
+
+    /**
+     * Changes title, fab, up button etc
+     */
+    private fun modifyContainer() {
+        baseFragmentCallBack.showFab()
+        baseFragmentCallBack.hideUpButton()
     }
 
     override fun showLoadingState(view: View) {
@@ -65,15 +80,23 @@ class FragmentHome : BaseFragment() {
         super.hideLoadingState(view)
     }
 
+    /**
+     * Loads user
+     */
     private fun loadUser() {
         displayUserViewModel.loadAboutUserInfo(1)
     }
 
-
+    /**
+     * Initialize Observers
+     */
     private fun initLiveDataObservers() {
         initGetUserObserver()
     }
 
+    /**
+     * Listen in for any User that has been received.
+     */
     private fun initGetUserObserver() {
         // When there is a data change i.e our view model calls setValue()
         // this will result in onChanged being called in this observer
@@ -85,6 +108,9 @@ class FragmentHome : BaseFragment() {
                 })
     }
 
+    /**
+     * Displays user information.
+     */
     private fun updateUserInfo(uiAboutUser : UIAboutUser) {
         val user = uiAboutUser.uiUser
         userName.text = user.name

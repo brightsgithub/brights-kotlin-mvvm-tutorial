@@ -1,12 +1,11 @@
 package cleanarcpro.brightowusu.com.cleanarcproj
 
-import android.app.Instrumentation
 import android.content.Context
 import android.content.Intent
 import android.support.test.InstrumentationRegistry
 import android.support.test.rule.ActivityTestRule
 import cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.fakeserver.FakeServer
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.NetworkUtil
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.NetworkProvider
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.RepositoryProvider
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.RetrofitProvider
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
@@ -20,32 +19,36 @@ abstract class BaseUITest : FakeServer() {
     @get:Rule
     public var testActivityRule: ActivityTestRule<ActivityHome> = ActivityTestRule(ActivityHome::class.java, false, false)
 
-    fun init() {
+    protected fun init() {
         useFakeServer(getContext())
         userRepository = getConfiguredUserRepository()
     }
 
-    fun cleanUp() {
+    protected fun cleanUp() {
         performCleanUp()
     }
 
-    fun getContext() : Context {
+    private fun getContext() : Context {
         return InstrumentationRegistry.getInstrumentation().context
     }
 
-    fun getTargetContext() : Context{
+    private fun getTargetContext() : Context{
         return InstrumentationRegistry.getInstrumentation().targetContext
     }
 
-    fun launchActivity() {
+    protected fun launchActivity() {
         val i = Intent(getTargetContext(), ActivityHome::class.java)
         testActivityRule.launchActivity(i)
     }
 
+    /**
+     * We get a reference to the Repo so we can call mock data, instead of hardcoding
+     * values which may change
+     */
     fun getConfiguredUserRepository(): IUserRepository {
-        val interceptor = NetworkUtil.provideHttpLoggingInterceptor()
-        val okHttpClient = NetworkUtil.provideOkhttpClient(interceptor)
-        val gson = NetworkUtil.gson()
+        val interceptor = NetworkProvider.provideHttpLoggingInterceptor()
+        val okHttpClient = NetworkProvider.provideOkhttpClient(interceptor)
+        val gson = NetworkProvider.gson()
         val retrofit = RetrofitProvider.providesRetrofit(okHttpClient, gson)
         return RepositoryProvider.providesUserRepository(retrofit)
     }

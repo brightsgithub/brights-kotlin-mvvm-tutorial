@@ -9,6 +9,11 @@ import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.DisplayUserViewModel
 import dagger.Module
 import dagger.Provides
 
+/**
+ * Provides what we need to the specific Fragment.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 @Module
 class FragmentHomeModule(val fragmentHome: FragmentHome) {
 

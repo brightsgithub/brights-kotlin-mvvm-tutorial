@@ -4,7 +4,11 @@ import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.I
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
 import io.reactivex.Observable
 
-
+/**
+ * Get the User and perform any business logic here if needed.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 class GetUserUseCase (val userRepository: IUserRepository) : IGetUserInteractor {
 
 

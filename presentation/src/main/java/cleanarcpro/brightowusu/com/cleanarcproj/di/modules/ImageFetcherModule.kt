@@ -6,6 +6,11 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+/**
+ * Image fetcher.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 @Module(includes = [AppModule::class])
 class ImageFetcherModule {
 

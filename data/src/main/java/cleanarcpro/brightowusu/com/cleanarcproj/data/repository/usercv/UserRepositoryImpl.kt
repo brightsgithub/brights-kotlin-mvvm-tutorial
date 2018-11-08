@@ -10,7 +10,10 @@ import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainProfessional
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
 import io.reactivex.Observable
 
-
+/**
+ * UserRepositoryImpl -  decides where our data comes from, i.e. database, network, shared pref etc.
+ * TODO - Use Room DB for single source of truth.
+ */
 class UserRepositoryImpl(val uerCVApi: IUserCVApi) : IUserRepository{
 
     override fun getUser(userId: Int): Observable<DomainUser> {

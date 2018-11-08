@@ -4,6 +4,11 @@ import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.I
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainProfessionalSummary
 import io.reactivex.Observable
 
+/**
+ * Get the users summary and perform any business logic here if needed.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 class GetProSummaryUseCase(val userRepository: IUserRepository) : IGetProSummaryInteractor {
 
     var userId: Int? = null

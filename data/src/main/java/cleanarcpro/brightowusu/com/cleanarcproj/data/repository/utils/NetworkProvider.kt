@@ -6,7 +6,14 @@ import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
-class NetworkUtil {
+/**
+ * For testing purposes, this is defined in a single place, which will be used by Dagger and mocked
+ * tests. This serves as a single place for the setup.
+ * This is a work around since injecting dependencies into androidTest class is difficult.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
+class NetworkProvider {
 
     companion object {
         fun provideOkhttpClient(

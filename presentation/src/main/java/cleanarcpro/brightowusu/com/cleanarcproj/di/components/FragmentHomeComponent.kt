@@ -1,7 +1,6 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.di.components
 
 import cleanarcpro.brightowusu.com.cleanarcproj.di.ActivityScope
-import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.ActivityUserModule
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.AppModule
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.FragmentHomeModule
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.InteractorsModule

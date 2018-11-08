@@ -1,29 +1,23 @@
 package cleanarcpro.brightowusu.com.cleanarcproj
 
-import android.content.Intent
-import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import android.view.View
-import cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.fakeserver.FakeServer
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.mappers.MapPastExperiencesDomainToUI
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExperiences
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.NetworkUtil
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.RepositoryProvider
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.RetrofitProvider
-import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.AppNavigationUtil
-import cleanarcpro.brightowusu.com.cleanarcproj.view.activities.ActivityHome
-import org.hamcrest.CoreMatchers
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * UI Testing in isolation
+ * This is so that we don't have the scenario of one fragment or activity depending on another.
+ * https://developer.android.com/training/testing/ui-testing/espresso-testing#intents
+ * Bright Owusu - Amankwaa
+ */
 @RunWith(AndroidJUnit4::class)
 class FragmentPreviousExpDetail : BaseUITest() {
 

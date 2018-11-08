@@ -1,11 +1,16 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.di.modules;
 
-import cleanarcpro.brightowusu.com.cleanarcproj.di.ActivityScope;
-import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository;
+import cleanarcpro.brightowusu.com.cleanarcproj.di.ActivityScope
+import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors.*
-import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
-import dagger.Module;
-import dagger.Provides;
+import dagger.Module
+import dagger.Provides
+
+/**
+ * UseCase Implementations
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 @Module
 class InteractorsModule {
 

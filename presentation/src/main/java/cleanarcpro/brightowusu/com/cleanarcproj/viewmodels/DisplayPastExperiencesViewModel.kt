@@ -11,6 +11,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
+/**
+ * Created by Bright Owusu-Amankwaa
+ */
 class DisplayPastExperiencesViewModel : ViewModel(){
 
     private val disposables = CompositeDisposable()
@@ -21,12 +24,16 @@ class DisplayPastExperiencesViewModel : ViewModel(){
     @Inject
     lateinit var pastExperienceInteractor: IGetPastExperiencesInteractor
 
-
+    /**
+     * Get the Live data containing the Past experiences
+     */
     fun getLoadedPastExpLiveData(): LiveData<UIPastExperiences> {
         return pastExperiencesLiveData
     }
 
-
+    /**
+     * Loads past user work experiences.
+     */
     fun loadPastExperiences(userId: Int) {
         pastExperienceInteractor.setUserId(userId)
         disposables.add(pastExperienceInteractor.execute()

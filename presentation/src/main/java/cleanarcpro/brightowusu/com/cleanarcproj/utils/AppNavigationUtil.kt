@@ -1,6 +1,5 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.utils
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
@@ -17,6 +16,10 @@ import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.FragmentHome
 import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.FragmentPreviousExpDetail
 import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.FragmentPreviousExperiences
 
+/**
+ * Currently Responsible for app navigation.
+ * (Would be good to soon start using the new Navigation Component)
+ */
 class AppNavigationUtil {
 
     companion object {

@@ -7,6 +7,9 @@ import cleanarcpro.brightowusu.com.cleanarcproj.di.components.DaggerAppComponent
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.AppModule
 import com.squareup.picasso.Picasso
 
+/**
+ * Created by Bright Owusu-Amankwaa
+ */
 open class MainApplication : Application() {
 
     private var repositoryComponent: AppComponent? = null

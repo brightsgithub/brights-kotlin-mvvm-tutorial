@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
 
+/**
+ * Things most Fragments care about
+ * Created by Bright Owusu-Amankwaa
+ */
 abstract class BaseFragment : Fragment() {
 
     protected lateinit var baseFragmentCallBack: BaseFragmentCallBack
@@ -14,13 +18,35 @@ abstract class BaseFragment : Fragment() {
         initDependencies()
     }
 
+    /**
+     * Init dagger dependencies here
+     */
     abstract fun initDependencies()
 
     interface BaseFragmentCallBack {
+        /**
+         * Shows the FloatingActionButton .
+         */
         fun showFab()
+
+        /**
+         * Hides the FloatingActionButton.
+         */
         fun hideFab()
+
+        /**
+         * Shows the Up navigation button.
+         */
         fun showUpButton()
+
+        /**
+         * Hides the Up navigation button.
+         */
         fun hideUpButton()
+
+        /**
+         * Sets the toolbar title.
+         */
         fun setToolBarTitle(title: String)
     }
 
@@ -33,12 +59,18 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
+    /**
+     * Show loading state.
+     */
     protected open fun showLoadingState(view : View) {
         if (isRemoving)
             return
         view.visibility = View.VISIBLE
     }
 
+    /**
+     * Hide loading state
+     */
     protected open fun hideLoadingState(view : View) {
         if (isRemoving)
             return

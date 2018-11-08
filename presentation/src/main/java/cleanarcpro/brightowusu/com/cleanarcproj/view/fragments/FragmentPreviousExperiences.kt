@@ -20,6 +20,9 @@ import kotlinx.android.synthetic.main.fragment_past_exp.*
 import kotlinx.android.synthetic.main.progress_layout.*
 import javax.inject.Inject
 
+/**
+ * Created by Bright Owusu-Amankwaa
+ */
 class FragmentPreviousExperiences : BaseFragment() {
 
     @Inject
@@ -53,14 +56,27 @@ class FragmentPreviousExperiences : BaseFragment() {
         initView()
     }
 
+    /**
+     * Init the view.
+     */
     private fun initView() {
+        modifyContainer()
+        initRecyclerView()
+        loadPastExperiences()
+    }
+
+    /**
+     * Changes title, fab, up button etc.
+     */
+    private fun modifyContainer() {
         baseFragmentCallBack.hideFab()
         baseFragmentCallBack.showUpButton()
         baseFragmentCallBack.setToolBarTitle(getString(R.string.prev_exp))
-        initRecyclerView()
-        loadUser()
     }
 
+    /**
+     * Init the RecyclerView used for displaying all past experiences.
+     */
     private fun initRecyclerView() {
         val layoutManager = LinearLayoutManager(activity)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -78,17 +94,25 @@ class FragmentPreviousExperiences : BaseFragment() {
         previousExpRecyclerView.adapter = adapter
     }
 
-    private fun loadUser() {
+    /**
+     * Load the users past experiences.
+     */
+    private fun loadPastExperiences() {
         showLoadingState(progress_bar)
         viewModel.loadPastExperiences(1)
     }
 
-
+    /**
+     * Init any observers
+     */
     private fun initLiveDataObservers() {
-        initGetUserObserver()
+        initPastExperienceObserver()
     }
 
-    private fun initGetUserObserver() {
+    /**
+     * Listen in for any updates for UIPastExperience
+     */
+    private fun initPastExperienceObserver() {
         // When there is a data change i.e our view model calls setValue()
         // this will result in onChanged being called in this observer
         viewModel.getLoadedPastExpLiveData().observe(
@@ -98,6 +122,9 @@ class FragmentPreviousExperiences : BaseFragment() {
                 })
     }
 
+    /**
+     * Displays past experiences.
+     */
     private fun displayPastExpList(pastExperiencesWrapper : UIPastExperiences) {
         adapter.pastExperiences = pastExperiencesWrapper.pastExperiences
         hideLoadingState(progress_bar)

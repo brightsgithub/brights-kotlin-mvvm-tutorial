@@ -12,11 +12,13 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
-@RunWith(AndroidJUnit4::class)
 /**
- *
+ * UI Testing in isolation
+ * This is so that we don't have the scenario of one fragment or activity depending on another.
+ * https://developer.android.com/training/testing/ui-testing/espresso-testing#intents
+ * Bright Owusu - Amankwaa
  */
+@RunWith(AndroidJUnit4::class)
 class FragmentHomeEspressoTest : BaseUITest() {
 
     @Before

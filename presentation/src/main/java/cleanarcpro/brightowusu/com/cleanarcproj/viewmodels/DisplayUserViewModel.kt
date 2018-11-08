@@ -3,23 +3,20 @@ package cleanarcpro.brightowusu.com.cleanarcproj.viewmodels
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.mappers.MapDomainUserDetailsToUI
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors.IGetAboutUserInteractor
-import cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors.IGetUserInteractor
-import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
 import cleanarcpro.brightowusu.com.cleanarcproj.mappers.MapDomainAboutUserToUI
 import cleanarcpro.brightowusu.com.cleanarcproj.models.UIAboutUser
-import cleanarcpro.brightowusu.com.cleanarcproj.models.UIUser
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
+/**
+ * Created by Bright Owusu-Amankwaa
+ */
 class DisplayUserViewModel : ViewModel() {
 
     private val disposables = CompositeDisposable()
-
     private val aboutUserLiveData = MutableLiveData<UIAboutUser>()
     private val error = MutableLiveData<Throwable>()
 
@@ -27,11 +24,17 @@ class DisplayUserViewModel : ViewModel() {
     lateinit var aboutUserInteractor: IGetAboutUserInteractor
 
 
+    /**
+     * Gets the LiveData for UIAboutUser
+     */
     fun getLoadedUserLiveData(): LiveData<UIAboutUser> {
         return aboutUserLiveData
     }
 
 
+    /**
+     * Loads user and summary information
+     */
     fun loadAboutUserInfo(userId: Int) {
         aboutUserInteractor.setUserId(userId)
         disposables.add(aboutUserInteractor.execute()

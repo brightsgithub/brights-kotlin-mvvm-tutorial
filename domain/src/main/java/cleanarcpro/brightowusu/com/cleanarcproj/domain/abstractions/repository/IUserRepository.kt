@@ -6,6 +6,10 @@ import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainProfessional
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
 import io.reactivex.Observable
 
+/**
+ * To be implemented by another layer
+ * Created by Bright Owusu-Amankwaa
+ */
 interface IUserRepository {
 
     fun getUser(userId: Int): Observable<DomainUser>

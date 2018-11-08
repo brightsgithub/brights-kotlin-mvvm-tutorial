@@ -8,6 +8,11 @@ import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.DisplayPastExperience
 import dagger.Module
 import dagger.Provides
 
+/**
+ * Provides what we need to the specific Fragment.
+ *
+ * Created by Bright Owusu-Amankwaa
+ */
 @Module
 class FragmentPastExpModule(val fragmentPreviousExperiences: FragmentPreviousExperiences) {
 

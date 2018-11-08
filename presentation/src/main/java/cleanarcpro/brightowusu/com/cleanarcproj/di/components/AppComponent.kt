@@ -1,13 +1,14 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.di.components;
 
-import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.*
-import javax.inject.Singleton;
-
-import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository;
+import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.ImageFetcherModule
+import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.NetworkModule
+import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.RepositoryModule
+import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.RetrofitModule
+import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import com.squareup.picasso.Picasso
-import dagger.Component;
-import okhttp3.OkHttpClient;
+import dagger.Component
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [RepositoryModule::class, NetworkModule::class, RetrofitModule::class, ImageFetcherModule::class])
