@@ -1,30 +1,23 @@
 apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
 
-    //testBuildType "mockserver"
-    testBuildType obtainTestBuildType()
-
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
     buildTypes {
-
-        def localhost = "http://localhost:8080"
-
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -32,62 +25,62 @@ android {
 
         debug {
             signingConfig signingConfigs.debug
+        }
+
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        prod {
+            dimension "version"
             buildConfigField 'String', 'BASE_URL', '"https://raw.githubusercontent.com/brightsgithub/"'
         }
-
-        mockserver {
-            debuggable = true
-            minifyEnabled false
-            signingConfig signingConfigs.debug
-            buildConfigField 'String', 'BASE_URL', "\"${localhost}\""
+        mockServer {
+            dimension "version"
+            buildConfigField 'String', 'BASE_URL', '"http://localhost:8080/brightsgithub/"'
         }
-
     }
 }
 
-/*
- * Change the build type you test with using
- * ./gradlew connectedAndroidTest -PtestBuildType=release
- * N.B running tests in android studio will ignore this
- */
-def obtainTestBuildType() {
-    def result = "mockserver"
-
-    if (project.hasProperty("testBuildType")) {
-        result = project.getProperties().get("testBuildType")
-    }
-
-    result
-}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
 
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion
 
     // https://github.com/square/okhttp
-    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
 
-    // RX 2
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.6.0'
 
-    // OkHttpMockServer
-    //implementation 'com.squareup.okhttp3:mockwebserver:3.8.1'
-    //androidTestImplementation project(':testutils')
-    androidTestCompile project(':testutils')
+    // moshi
+    implementation 'com.squareup.moshi:moshi-kotlin:1.8.0'
+
+    androidTestImplementation project(':testutils')
+
+    // Room components #############################
+    // https://developer.android.com/jetpack/androidx/releases/room
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+    // #############################
 }

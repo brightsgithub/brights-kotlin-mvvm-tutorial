@@ -1,12 +1,15 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.view.activities
 
-import android.support.v7.app.AppCompatActivity
+import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import cleanarcpro.brightowusu.com.cleanarcproj.R
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExperience
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.AppNavigationUtil
 import cleanarcpro.brightowusu.com.cleanarcproj.view.fragments.BaseFragment
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home_new.*
 import kotlinx.android.synthetic.main.custom_tool_bar.*
 
@@ -23,8 +26,8 @@ import kotlinx.android.synthetic.main.custom_tool_bar.*
  */
 class ActivityHome : AppCompatActivity() , BaseFragment.BaseFragmentCallBack {
 
-    private val userId = 1
-
+    private val userId = 1L
+    private var snackbar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,5 +96,20 @@ class ActivityHome : AppCompatActivity() , BaseFragment.BaseFragmentCallBack {
             super.onBackPressed()
         }
 
+    }
+
+    override fun showSnackbar(msg: String, length: Int, bgHexColor: String?, textHexColor: String?) {
+        snackbar = Snackbar.make(window.decorView.findViewById(R.id.parent_container), msg, length)
+        bgHexColor?.let {
+            snackbar?.view?.setBackgroundColor(Color.parseColor(it))
+        }
+
+        textHexColor?.let {
+            val textView = snackbar?.view?.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+            textView.setTextColor(Color.parseColor(it))
+        }
+
+
+        snackbar?.show()
     }
 }

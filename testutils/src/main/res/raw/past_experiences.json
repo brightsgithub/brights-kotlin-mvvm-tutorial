@@ -2,57 +2,65 @@
   "past_experiences": [
     {
       "id": 1,
+      "user_id": 1,
+      "company_name": "HSBC",
+      "role_name": "Android senior developer (Contract)",
+      "dates_start": "DEC 2018",
+      "date_end": "JUL 2019",
+      "responsibilities": "
+      •	Responsible for creating composed/atomic UI components added to the Mobile Design SDK and responsible for integrating the SDK into various HSBC apps.
+      •	Responsible for creating the Mobile Network SDK and its GitHub repository as well as setting up permissions within Github, integration with Jenkins and Hockey app. Also responsible for implementing new network related calls within this SDK and integrating this into various HSBC apps.
+      •	Responsible for creating the Mobile Security SDK and its GitHub repository as well as setting up permissions within Github, integration with Jenkins and Hockey app. Also responsible for implementing new encryption and keystore manager within this SDK.
+      •	Responsible for various releases and integration into other apps of all of the above libraries.
+      •	General day to day enhancements bug/fixing and supporting other apps in code maintenance.
+      ",
+      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/hsbc_logo.png",
+      "tech_used": "Working in an agile scrum environment,
+      Kotlin, Coroutines, MockWebServer, Retrofit 2, Dagger 2, Facebook screenshot testing, Hockey App."
+    },
+    {
+      "id": 2,
+      "user_id": 1,
       "company_name": "Sainsbury’s",
       "role_name": "Android senior developer (Contract)",
       "dates_start": "JUN 2018",
       "date_end": "OCT 2018",
       "responsibilities": "
-•	Responsible for setting up and implementing the CI pipeline server Jenkins to run unit, unit instumented, UI instumented and mock tests and create a artifacts.
-
-•	Going forward all new code was written in Kotlin.
-
-•	Suggested and implemented going forward to use RXJava2, Retrofit, Clean Architecture with MVVM, Architecture components such as Live Data, Room and View Models with a TDD approach.
-
-•	Advised on the benefits of OKHTTP MockWebServer for testing and then implemented it.
-
-•	Responsible for App release management.
-
-•	UX/UI Review. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
-
-•	Day to day maintenance of the app i.e. new features, bug fixes UI updates.
-
-•	Also did some work on web services using GO.
-",
-      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/sains_gol_logo.png",
+      •	Responsible for setting up and implementing the CI pipeline server Jenkins to run unit, unit instumented, UI instumented and mock tests and create a artifacts.
+      •	Going forward all new code was written in Kotlin.
+      •	Suggested and implemented going forward to use RXJava2, Retrofit, Clean Architecture with MVVM, Architecture components such as Live Data, Room and View Models with a TDD approach.
+      •	Advised on the benefits of OKHTTP MockWebServer for testing and then implemented it.
+      •	Responsible for App release management.
+      •	UX/UI Review. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
+      •	Day to day maintenance of the app i.e. new features, bug fixes UI updates.
+      •	Also did some work on web services using GO.
+      ",
+      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/sains_gol_logo.jpg",
       "tech_used": "Working in an agile scrum environment,
       Kotlin, Architecture components Room, Live Data & View Model. TDD (Test Driven Development), Pivotal Tracker, using MVVM Clean Architecture. RXAndroid2/Java, MockWebServer, Retrofit 2, Dagger 2, Material Design approach, Picasso. Testing involved all 3 types i.e Unit tests for behaviour, Unit Instrumentation tests testing all via device which was non UI, Espresso UI tests for UI testing, Mockito, & all the standard Android classes such as Fragments, Broadcast receivers, Activities etc."
     },
     {
-      "id": 2,
+      "id": 3,
+      "user_id": 1,
       "company_name": "BigHand ",
       "role_name": "Android senior developer (Contract)",
       "dates_start": "AUG 2017",
       "date_end": "JUN 2018",
       "responsibilities": "
       My time at BigHand can be summarised into 3 main areas:
-1)	Continue to implement the new version of the app using the robust Uncle Bob’s Clean Architecture including MVP.
-2)	Brining the app into feature parity with the iOS version, but doing this within the Material Design guidelines.
-3)	Implementing new features.
-
-•	Implemented Android Enterprise (Android for work)
-
-•	Implemented various tablet designs including master detail layout for tablet.
-
-•	Advised on the benefits of OKHTTP MockWebServer for testing and then implemented it.
-
-•	UX/UI Review. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
-
-•	Bug fixes including long existing RXAndroid issues which were solved.
-",
+    1)	Continue to implement the new version of the app using the robust Uncle Bob’s Clean Architecture including MVP.
+      2)	Brining the app into feature parity with the iOS version, but doing this within the Material Design guidelines.
+      3)	Implementing new features.
+      •	Implemented Android Enterprise (Android for work)
+      •	Implemented various tablet designs including master detail layout for tablet.
+      •	Advised on the benefits of OKHTTP MockWebServer for testing and then implemented it.
+      •	UX/UI Review. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
+      •	Bug fixes including long existing RXAndroid issues which were solved.
+      ",
       "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/bighand_logo.png",
       "tech_used":"Working in an agile scrum environment,
-TDD (Test Driven Development), TFS, using MVP Clean Architecture approach as inspired by Uncle Bob. RXAndroid/Java, GreenDAO, MockWebServer, Android Enterprise, ButterKnife, Retrofit 2, Dagger 2, Material Design approach, Picasso. Testing involved all 3 types i.e Unit tests for behaviour, Unit Instrumentation tests testing all via device which was non UI, Espresso UI tests for UI testing, Mockito, Powermock & all the standard Android classes such as Fragments, Broadcast receivers, Activities etc.
-"
+      TDD (Test Driven Development), TFS, using MVP Clean Architecture approach as inspired by Uncle Bob. RXAndroid/Java, GreenDAO, MockWebServer, Android Enterprise, ButterKnife, Retrofit 2, Dagger 2, Material Design approach, Picasso. Testing involved all 3 types i.e Unit tests for behaviour, Unit Instrumentation tests testing all via device which was non UI, Espresso UI tests for UI testing, Mockito, Powermock & all the standard Android classes such as Fragments, Broadcast receivers, Activities etc.
+      "
     },
 
 
@@ -61,27 +69,64 @@ TDD (Test Driven Development), TFS, using MVP Clean Architecture approach as ins
 
 
     {
-      "id": 3,
+      "id": 4,
+      "user_id": 1,
       "company_name": "Avios ",
       "role_name": "Android lead development role (Contract)",
       "dates_start": "JUN 2016",
       "date_end": "JULY 2017",
       "responsibilities": "•	Responsible for the Android version of the Avios app.
-
-•	Responsible for securing the app in terms of implementing certificate pinning, OAuth2 login (Retrofit’s Authenticator & Interceptor), Obfuscation, Root detection, AES 256 Encryption (Encryption key generated runtime)
-
-•	Implemented background video in earlier version along with screen capture of video using RenderScript.
-
-•	UX/UI meetings. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
-
-•	Day to day tasks of implementing new features/screens, bug fixing etc.
-
-•	Responsible for release cycle of the app using Alpha & Beta channels. Tagging, app versioning all re-implemented.
-
-•	Interviewing/hiring Android developers
-",
-      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/avios_logo.png",
+      •	Responsible for securing the app in terms of implementing certificate pinning, OAuth2 login (Retrofit’s Authenticator & Interceptor), Obfuscation, Root detection, AES 256 Encryption (Encryption key generated runtime)
+      •	Implemented background video in earlier version along with screen capture of video using RenderScript.
+      •	UX/UI meetings. Feedback/advice on Material Design for Android i.e. using as much native components & solutions as possible, as so to be intuitive to the user.
+      •	Day to day tasks of implementing new features/screens, bug fixing etc.
+      •	Responsible for release cycle of the app using Alpha & Beta channels. Tagging, app versioning all re-implemented.
+      •	Interviewing/hiring Android developers
+      ",
+      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/avios_logo.jpg",
       "tech_used":"Technologies used: Working in an agile scrum environment, TDD (Test Driven Development), JIRA, using MVP Clean Architecture approach as inspired by Uncle Bob. RXAndroid/Java, ButterKnife, Retrofit 2, Dagger 2, Material Design approach, Picasso. Testing involved all 3 types i.e Unit tests for behaviour, Unit Instrumentation tests testing all via device which was non UI, Espresso UI tests for UI testing, Buddy build, Mockito, Powermock & all the standard Android classes such as Fragments, Broadcast receivers, Activities etc. BitBucket & Buddy build. "
+    },
+
+
+
+    {
+      "id": 5,
+      "user_id": 1,
+      "company_name": "Sainsbury’s Smart Shop",
+      "role_name": "Android (senior/lead) Development role (Permanent)",
+      "dates_start": "MAR 2015",
+      "date_end": "JUN 2016",
+      "responsibilities": "Building the Sainsbury’s Smart Shop app from ground up
+      •	Responsible for the Android version of SmartShop.
+      •	Responsible for managing the internal QA and customer release builds to the public via the Google Play Developer Console. Utilising alpha and beta channels from the Google Play Developer Console.
+      •	Involved in meetings with UX, UI & product owners to implement new screens and the best way forward for what suits Android. Taking in account what Android users expect as a natural/native user experience on this platform.
+      •	Responsible for implementing the entire SDK for the web communication layer and authentication (OAuth 2.0) for our apps to share such as the Smart Shop app and the JS Handset app.
+      •	Assisted with development of an in house Innovation app, using the much talked about new language Kotlin.
+      •	Used Scandit, which is a scanning library used for scanning barcodes & QR codes, whilst the customer is shopping within the store.",
+      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/sains_ss_logo.png",
+      "tech_used":"Technologies used: Working in an agile scrum environment, TDD (Test Driven Development), Location Services, Kotlin, Scandit, GSON, Parse, Card I/0 (Credit card scanner), Picasso, Crashlytics, QR Code generator, Activities, Recyclerviews, Handlers, Broadcast receivers, Android testing support with Junit, Espresso and Mockito."
+    },
+
+
+
+    {
+      "id": 6,
+      "user_id": 1,
+      "company_name": "Truphone",
+      "role_name": "Android Development role (Permanent)",
+      "dates_start": "SEPT 2013",
+      "date_end": "MAR 2015",
+      "responsibilities": "Working on the Android version of our Truphone VOIP app
+      •	Maintaining the Truphone app via bug fixes and implementing new enhancements.
+      •	Responsible for implementing the GCM Google API framework within the app for the purpose of notifying our customers of any new tutorials that will be presented to the end customer, and any promotions that will be shown to the customer offering them discounts on our products.
+      •	Responsible for the massive refactor of our XMPP based Instant Messaging section of the app and implementing the XMPP edit message functionality for the app.
+      •	Responsible for the implementing a new product, which contains many new screens for Truphone. Therefore since our app was mainly Activity based, I decided to go with fragments.
+      •	Helped in the development of separating concerns in regards to how the android app made its web service calls and what could be reused in the future by another app or web app.
+      •	Myself and another IOS developer were responsible for carrying out interviews of various candidates for an android developer role at Truphone. I also suggested that a mini android project to be completed within a few days to better assess the candidate. An excellent developer was then finally employed.",
+      "company_logo": "https://raw.githubusercontent.com/brightsgithub/random-data/master/fake_data/users/1/true_phone_logo.png",
+      "tech_used":"Technologies used: Working in an agile environment, Location Services, GCM, XMPP, In app billing, SQLLITE, Application, Singletones, Fragments, Activities, Services, Listviews (view holder) Tabs, Action bar menu, made calls to restful api’s, Aysnc tasks, Handlers."
     }
+
+
   ]
 }

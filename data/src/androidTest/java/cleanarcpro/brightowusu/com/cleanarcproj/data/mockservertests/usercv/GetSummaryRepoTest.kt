@@ -1,23 +1,24 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.usercv
 
-import android.support.test.InstrumentationRegistry
+
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import cleanarcpro.brightowusu.com.cleanarcproj.data.TestDependencies
 import cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.fakeserver.FakeServer
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import javax.inject.Inject
 
 class GetSummaryRepoTest : FakeServer(){
 
-    @Inject
     lateinit var userRepository: IUserRepository
-    private val FAKE_USER_ID = 1
+    private val FAKE_USER_ID = 1L
 
     @Before
     fun init() {
-        useFakeServer(InstrumentationRegistry.getInstrumentation().context)
+        useFakeServer(getInstrumentation().context)
         userRepository = TestDependencies.getConfiguredUserRepository()
     }
 
@@ -27,18 +28,9 @@ class GetSummaryRepoTest : FakeServer(){
     }
 
     @Test
-    fun should_get_summary() {
-        val testObserver = userRepository.getProfessionalSummary(FAKE_USER_ID).test()
-
-        testObserver.awaitTerminalEvent()  // wait for the response
-
-        val onNextEvents = testObserver.values()
-
-        val professionalSummary = onNextEvents[0]
-
-        // Make sure onNext was called
-        testObserver.assertNoErrors()
-
+    fun should_get_summary()  = runBlocking {
+        userRepository.getUser(FAKE_USER_ID) // so that the user is inserted within the DB
+        val professionalSummary = userRepository.getProfessionalSummary(FAKE_USER_ID)
         assert(professionalSummary.professionalSummary.startsWith("I am an experienced Java developer with"))
     }
 

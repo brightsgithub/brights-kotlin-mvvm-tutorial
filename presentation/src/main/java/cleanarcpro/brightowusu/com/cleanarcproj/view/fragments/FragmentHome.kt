@@ -1,7 +1,6 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.view.fragments
 
-import android.arch.lifecycle.Observer
-import android.content.Context
+import androidx.lifecycle.Observer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import cleanarcpro.brightowusu.com.cleanarcproj.di.components.DaggerFragmentHome
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.FragmentHomeModule
 import cleanarcpro.brightowusu.com.cleanarcproj.models.UIAboutUser
 import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.DisplayUserViewModel
+import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.states.DisplayUserViewState
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.progress_layout.*
 import javax.inject.Inject
@@ -25,6 +25,7 @@ class FragmentHome : BaseFragment() {
 
     @Inject
     lateinit var displayUserViewModel: DisplayUserViewModel
+    var doesUserExist: Boolean? = null
 
     private lateinit var homeFragmentCallBack : HomeFragmentCallBack
     private interface HomeFragmentCallBack {
@@ -97,20 +98,41 @@ class FragmentHome : BaseFragment() {
      * Initialize Observers
      */
     private fun initLiveDataObservers() {
-        initGetUserObserver()
+        initDisplayUserObserver()
     }
 
     /**
      * Listen in for any User that has been received.
      */
-    private fun initGetUserObserver() {
+    private fun initDisplayUserObserver() {
         // When there is a data change i.e our view model calls setValue()
         // this will result in onChanged being called in this observer
-        displayUserViewModel.getLoadedUserLiveData().observe(
+        displayUserViewModel.getDisplayUserState().observe(
                 this,
-                Observer { user ->
-                    updateUserInfo(user!!)
-                    hideLoadingState(progress_bar)
+                Observer { state ->
+
+                   when(state) {
+                       is DisplayUserViewState.Success -> {
+                           updateUserInfo(state.user)
+                           hideLoadingState(progress_bar)
+                       }
+                       is DisplayUserViewState.UserExists -> {
+                           /**
+                            * We need to know if the user exists or not.
+                            * If it does not, this means that there wasn't a chance for caching this data
+                            * due to no network connection. Mar
+                            */
+                           doesUserExist = true
+                       }
+                       is DisplayUserViewState.UserDoesNotExist -> {
+                           /**
+                            * We need to know if the user exists or not.
+                            * If it does not, this means that there wasn't a chance for caching this data
+                            * due to no network connection. Mar
+                            */
+                           doesUserExist = false
+                       }
+                   }
                 })
     }
 
@@ -128,5 +150,14 @@ class FragmentHome : BaseFragment() {
 
     override fun onBackPressedShouldWeCloseActivity(): Boolean {
         return true
+    }
+
+    override fun handleDeviceHasConnection() {
+        if(doesUserExist != null && !doesUserExist!!) {
+            loadUser()
+        }
+    }
+
+    override fun handleDeviceHasNoConnection() {
     }
 }

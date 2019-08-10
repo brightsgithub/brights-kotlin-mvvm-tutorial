@@ -1,5 +1,8 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.di.modules;
 
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.db.dao.PastExperienceDao
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.db.dao.ProSummaryDao
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.db.dao.UserDao
 import javax.inject.Singleton
 
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils.RepositoryProvider
@@ -18,8 +21,17 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun providesUserRepository(retrofit: Retrofit): IUserRepository {
-        return RepositoryProvider.providesUserRepository(retrofit)
+    fun providesUserRepository(
+            retrofit: Retrofit,
+            userDao: UserDao,
+            pastExperienceDao: PastExperienceDao,
+            proSummaryDao: ProSummaryDao
+            ): IUserRepository {
+        return RepositoryProvider.providesUserRepository(
+                retrofit,
+                userDao,
+                proSummaryDao,
+                pastExperienceDao)
     }
 
 }

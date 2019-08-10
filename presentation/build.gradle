@@ -16,18 +16,23 @@ apply plugin: 'kotlin-kapt' // keep here and in this order or Dagger will screw 
  */
 android {
 
-    testBuildType obtainTestBuildType()
-
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "cleanarcpro.brightowusu.com.cleanarcproj"
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+
     buildTypes {
 
 
@@ -39,39 +44,34 @@ android {
         debug {
             signingConfig signingConfigs.debug
         }
+    }
 
-        mockserver {
-            debuggable = true
-            minifyEnabled false
-            signingConfig signingConfigs.debug
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
+    productFlavors {
+        prod {
+            dimension "version"
+        }
+        mockServer {
+            dimension "version"
+            applicationIdSuffix = ".mock"
         }
     }
-
-    packagingOptions {
-        // To avoid: DuplicateFileException: Duplicate files copied in APK META-INF/rxjava.properties
-        // This exclude must be kept at in this module gradle file rather than the cryptoCompareEntity layer
-        // module. This is due to the build order?
-        exclude 'META-INF/rxjava.properties'
-    }
-
-
 }
 
+// to avoid error Could not resolve androidx.arch.core:core-common:{strictly 2.0.1}.
+// Cannot find a version of 'androidx.arch.core:core-common' that satisfies the version constraints:
+configurations.all
+        {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'androidx.arch.core'
+                        && !details.requested.name.contains('core-runtime')) {
+                    details.useVersion "2.0.1"
+                }
 
-/*
- * Change the build type you test with using
- * ./gradlew connectedAndroidTest -PtestBuildType=release
- * N.B running tests in android studio will ignore this
- */
-def obtainTestBuildType() {
-    def result = "mockserver"
+            }
+        }
 
-    if (project.hasProperty("testBuildType")) {
-        result = project.getProperties().get("testBuildType")
-    }
-
-    result
-}
 
 dependencies {
 
@@ -85,18 +85,29 @@ dependencies {
     // to presentation, domain and data. As an Android workaround we point the presentation layer to the
     // data layer so that dependicies can be provided
     implementation project(':data')
-    androidTestCompile project(':testutils')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
-    implementation "com.android.support:cardview-v7:${supportLibVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation "com.android.support:design:${supportLibVersion}"
-    implementation "com.android.support:support-vector-drawable:${supportLibVersion}"
+    androidTestImplementation project(':testutils')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test:rules:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0-rc01'
+
+    // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.0'
+
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.1.0-rc01'
+
+
 
     // Dagger for DI
     implementation "com.google.dagger:dagger:2.16"
@@ -110,29 +121,27 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:2.16"
     kapt "com.google.dagger:dagger-android-processor:2.16"
 
-    // RX 2
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-
-    //implementation 'io.reactivex:rxandroid:1.2.1' // extensions schedulers etc
-    //implementation 'com.netflix.rxjava:rxjava-android:0.17.0'
-
     // https://github.com/square/okhttp
-    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
 
-    implementation "android.arch.lifecycle:extensions:1.1.1"
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.archLifecycleVersion"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$rootProject.archLifecycleVersion"
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
     // Circular Progressbar libary
     implementation 'com.github.castorflex.smoothprogressbar:library-circular:1.2.0'
 
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    // Kotlin coroutines view model scope
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha03'
+
+    // Steho
+    implementation 'com.facebook.stetho:stetho:1.5.0'
 
 }

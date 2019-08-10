@@ -1,10 +1,10 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.utils
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
+import androidx.appcompat.app.AppCompatActivity
 import cleanarcpro.brightowusu.com.cleanarcproj.R
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExperience
 import cleanarcpro.brightowusu.com.cleanarcproj.utils.Constants.Companion.HOME_FRAG_TAG_NAME
@@ -26,14 +26,14 @@ class AppNavigationUtil {
 
         fun navigateToHomeFragment(
                 activity: AppCompatActivity,
-                userId: Int) {
+                userId: Long) {
 
             if(doesFragmentExist(HOME_FRAG_TAG_NAME, activity)) {
                 return
             }
 
             val bundle = Bundle()
-            bundle.putInt(USER_ID_EXTRA, userId)
+            bundle.putLong(USER_ID_EXTRA, userId)
 
             val fragment = FragmentHome()
             addFragmentToView(
@@ -45,14 +45,14 @@ class AppNavigationUtil {
 
         fun navigateToFragmentPreviousExperiences(
                 activity: AppCompatActivity,
-                userId: Int) {
+                userId: Long) {
 
             if(doesFragmentExist(PREV_EXP_TAG_NAME, activity)) {
                 return
             }
 
             val bundle = Bundle()
-            bundle.putInt(USER_ID_EXTRA, userId)
+            bundle.putLong(USER_ID_EXTRA, userId)
 
             val fragment
                     =

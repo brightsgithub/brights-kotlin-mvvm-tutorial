@@ -1,65 +1,76 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.viewmodels
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import cleanarcpro.brightowusu.com.cleanarcproj.domain.exceptions.ProSumDoesNotExistException
+import cleanarcpro.brightowusu.com.cleanarcproj.domain.exceptions.UserDoesNotExistException
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors.IGetAboutUserInteractor
+import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainAboutUser
 import cleanarcpro.brightowusu.com.cleanarcproj.mappers.MapDomainAboutUserToUI
-import cleanarcpro.brightowusu.com.cleanarcproj.models.UIAboutUser
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
+import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.states.DisplayUserViewState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 /**
  * Created by Bright Owusu-Amankwaa
  */
 class DisplayUserViewModel : ViewModel() {
 
-    private val disposables = CompositeDisposable()
-    private val aboutUserLiveData = MutableLiveData<UIAboutUser>()
-    private val error = MutableLiveData<Throwable>()
+    private val displayUserStateLiveData = MutableLiveData<DisplayUserViewState>()
 
-    @Inject
     lateinit var aboutUserInteractor: IGetAboutUserInteractor
 
-
     /**
-     * Gets the LiveData for UIAboutUser
+     * Gets the LiveData display user state
      */
-    fun getLoadedUserLiveData(): LiveData<UIAboutUser> {
-        return aboutUserLiveData
+    fun getDisplayUserState(): LiveData<DisplayUserViewState> {
+        return displayUserStateLiveData
     }
-
 
     /**
      * Loads user and summary information
      */
-    fun loadAboutUserInfo(userId: Int) {
-        aboutUserInteractor.setUserId(userId)
-        disposables.add(aboutUserInteractor.execute()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            // onNext()
-                            domainAboutUser ->
-                            aboutUserLiveData.value = MapDomainAboutUserToUI.transform(domainAboutUser)
-                        },
-                        {
-                            // onError()
-                            t ->
-                            t.printStackTrace()
-                            error.value = t
-                        },
-                        {
-                            // onComplete()
-                        }))
+    fun loadAboutUserInfo(userId: Long, scope: CoroutineScope = viewModelScope) {
+        scope.launch {
+            aboutUserInteractor.setUserId(userId)
+            val backgroundJob = async { aboutUserInteractor.execute(scope)}
+            processResult(backgroundJob.await())
+        }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        disposables.clear()
+    private fun processResult(domainAboutUserResult: Pair<DomainAboutUser?, Exception?>) {
+
+        domainAboutUserResult.apply {
+            if(first != null) {
+                userExists()
+                updateUI(first!!)
+            } else {
+                handleError(second!!)
+            }
+        }
     }
 
+    private fun handleError(ex: Exception) {
+        when(ex) {
+            is ProSumDoesNotExistException,
+            is UserDoesNotExistException -> userDoesNotExist()
+            else -> displayUserStateLiveData.value = DisplayUserViewState.Error(ex) // some other error
+        }
+    }
+
+    private fun updateUI(domainAboutUser: DomainAboutUser) {
+        val uiUser = MapDomainAboutUserToUI.transform(domainAboutUser)
+        displayUserStateLiveData.value = DisplayUserViewState.Success(uiUser)
+    }
+
+    private fun userExists() {
+        displayUserStateLiveData.value = DisplayUserViewState.UserExists()
+    }
+
+    private fun userDoesNotExist() {
+        displayUserStateLiveData.value = DisplayUserViewState.UserDoesNotExist()
+    }
 }

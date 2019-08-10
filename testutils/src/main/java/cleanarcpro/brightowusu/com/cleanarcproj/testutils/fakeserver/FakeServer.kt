@@ -83,10 +83,6 @@ open class FakeServer {
                 statusCode = 200
                 jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.testutils.R.raw.professional_summary)
             }
-            else if (requestPath.equals("/brightsgithub/random-data/master/fake_data/users/1/topics_of_knowladge.json")) {
-                statusCode = 200
-                jsonResponse = getMockedResponseByFile(cleanarcpro.brightowusu.com.cleanarcproj.testutils.R.raw.topics_of_knowladge)
-            }
             else {
                 statusCode = 500
                 jsonResponse = "OUCH! need to declare our fake json response!!!"

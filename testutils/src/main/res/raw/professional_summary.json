@@ -1,7 +1,7 @@
 ﻿{
+  "id": 1,
   "user_id": 1,
   "professional_summary": "I am an experienced Java developer with 5+ years experience of Android development and 8+ years experience as a Java Web Developer of fully transactional MVC based systems. (My web development CV detail can be provided on request).
-
-I have worked in an Agile environment and I have a strong background in Object-Oriented analysis and design such as single responsibility enforcing, cohesion & reducing coupling etc. Good at enforcing various design patterns such as MVC, MVP (Uncle bob),Observer, DAO, Service Locator, Business delegate, IOC programming through interfaces and implementing test-driven development. I have stress tested to identify bad performance and bottlenecks.
-"
+  I have worked in an Agile environment and I have a strong background in Object-Oriented analysis and design such as single responsibility enforcing, cohesion & reducing coupling etc. Good at enforcing various design patterns such as MVC, MVP (Uncle bob),Observer, DAO, Service Locator, Business delegate, IOC programming through interfaces and implementing test-driven development. I have stress tested to identify bad performance and bottlenecks.
+  "
 }

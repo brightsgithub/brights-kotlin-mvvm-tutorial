@@ -1,6 +1,9 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.data.repository.utils
 
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.usercv.IUserCVApi
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.db.dao.PastExperienceDao
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.db.dao.ProSummaryDao
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.db.dao.UserDao
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.network.IUserCVApi
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.usercv.UserRepositoryImpl
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import retrofit2.Retrofit
@@ -15,10 +18,18 @@ import retrofit2.Retrofit
 class RepositoryProvider {
 
     companion object {
-        fun providesUserRepository(retrofit: Retrofit): IUserRepository {
-            return UserRepositoryImpl(retrofit.create(IUserCVApi::class.java))
+        fun providesUserRepository(
+                retrofit: Retrofit,
+                userDao: UserDao,
+                proSummaryDao: ProSummaryDao,
+                pastExperienceDao: PastExperienceDao
+                ): IUserRepository {
+
+            return UserRepositoryImpl(
+                    retrofit.create(IUserCVApi::class.java),
+                    userDao,
+                    proSummaryDao,
+                    pastExperienceDao)
         }
     }
-
-
 }

@@ -1,10 +1,8 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository
 
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainPastExperiences
-import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainTopicsOfKnowledge
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainProfessionalSummary
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
-import io.reactivex.Observable
 
 /**
  * To be implemented by another layer
@@ -12,12 +10,10 @@ import io.reactivex.Observable
  */
 interface IUserRepository {
 
-    fun getUser(userId: Int): Observable<DomainUser>
+    suspend fun getUser(userId: Long): DomainUser
 
-    fun getPastExperiences(userId: Int): Observable<DomainPastExperiences>
+    suspend fun getPastExperiences(userId: Long): DomainPastExperiences
 
-    fun getProfessionalSummary(userId: Int): Observable<DomainProfessionalSummary>
-
-    fun getTopicsOfKnowladge(userId: Int): Observable<DomainTopicsOfKnowledge>
+    suspend fun getProfessionalSummary(userId: Long): DomainProfessionalSummary
 
 }

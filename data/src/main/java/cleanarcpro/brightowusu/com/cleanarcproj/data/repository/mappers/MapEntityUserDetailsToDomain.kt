@@ -9,7 +9,7 @@ class MapEntityUserDetailsToDomain {
         fun transform(entityUser: EntityUser) : DomainUser {
 
             return DomainUser(
-                    entityUser.userId,
+                    entityUser.id,
                     entityUser.userName,
                     entityUser.email,
                     entityUser.phone)

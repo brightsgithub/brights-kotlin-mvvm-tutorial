@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import javax.inject.Named
 import javax.inject.Singleton
 
 /**
@@ -22,10 +23,7 @@ class RetrofitModule {
      */
     @Singleton
     @Provides
-    fun providesRetrofit(
-            okHttpClient: OkHttpClient,
-            gson: Gson) : Retrofit{
-        return RetrofitProvider.providesRetrofit(okHttpClient, gson)
+    fun providesRetrofit(okHttpClient: OkHttpClient) : Retrofit {
+        return RetrofitProvider.providesRetrofit(okHttpClient)
     }
-
 }

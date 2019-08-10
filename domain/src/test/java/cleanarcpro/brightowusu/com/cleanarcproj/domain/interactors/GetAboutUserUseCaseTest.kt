@@ -3,7 +3,8 @@ package cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainProfessionalSummary
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
-import io.reactivex.Observable
+import com.nhaarman.mockitokotlin2.given
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Ignore
@@ -31,7 +32,7 @@ class GetAboutUserUseCaseTest {
 
     private lateinit var interactor: IGetAboutUserInteractor
 
-    private val FAKE_ID = 1
+    private val FAKE_ID = 1L
 
     @Before
     fun setup() {
@@ -39,37 +40,41 @@ class GetAboutUserUseCaseTest {
     }
 
     @Test
-    fun should_get_about_user() {
+    fun should_get_about_user() = runBlocking {
 
         // GIVEN
         interactor.setUserId(FAKE_ID)
 
         // When
-        Mockito.`when`(userRepository.getProfessionalSummary(FAKE_ID))
-                .thenReturn(Observable.just(DomainProfessionalSummary(FAKE_ID,"")))
 
-        Mockito.`when`(userRepository.getUser(FAKE_ID))
-                .thenReturn(Observable.just(DomainUser(FAKE_ID,"","","")))
+        given {
+            runBlocking { userRepository.getProfessionalSummary(FAKE_ID) }
 
-        val testObserver = interactor.execute().test()
+        }.willReturn(DomainProfessionalSummary(FAKE_ID,""))
 
-        testObserver.awaitTerminalEvent()
 
-        val onNextEvents = testObserver.values()
+        given {
+            runBlocking { userRepository.getUser(FAKE_ID) }
 
-        val result = onNextEvents[0]
+        }.willReturn(DomainUser(FAKE_ID,"","",""))
 
-        // Make sure onNext was called
-        testObserver.assertNoErrors()
+        val resultPair = interactor.execute(this)
+
 
         // Then
-        Assert.assertTrue(result.domainSummary != null)
-        Assert.assertTrue(result.domainUser != null)
+        resultPair.first?.let {
+            Assert.assertTrue(it.domainSummary.equals(DomainProfessionalSummary(FAKE_ID,"")))
+            Assert.assertTrue(it.domainUser.equals(DomainUser(FAKE_ID,"","","")))
+        }
+
     }
 
     @Test(expected = IllegalStateException::class)
-    fun should_throw_error_when_no_id_set() {
-        // GIVEN
-        interactor.execute().test()
+    fun should_throw_error_when_no_id_set() = runBlocking {
+        val resultPair = interactor.execute(this)
+
+        if(resultPair.second != null) {
+            throw resultPair.second!!
+        }
     }
 }

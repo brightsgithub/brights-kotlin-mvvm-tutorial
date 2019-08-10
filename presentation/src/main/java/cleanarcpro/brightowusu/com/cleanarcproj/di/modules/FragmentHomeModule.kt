@@ -1,6 +1,6 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.di.modules
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import cleanarcpro.brightowusu.com.cleanarcproj.di.ActivityScope
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors.IGetAboutUserInteractor
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors.IGetUserInteractor

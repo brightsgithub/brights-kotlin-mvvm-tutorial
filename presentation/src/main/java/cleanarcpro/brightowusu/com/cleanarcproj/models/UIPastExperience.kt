@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 
 data class UIPastExperience(
-        val id: Int,
+        val id: Long,
         val companyName: String,
         val roleName: String,
         val datesStart: String,
@@ -16,7 +16,7 @@ data class UIPastExperience(
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
-            parcel.readInt(),
+            parcel.readLong(),
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
@@ -27,7 +27,7 @@ data class UIPastExperience(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
+        parcel.writeLong(id)
         parcel.writeString(companyName)
         parcel.writeString(roleName)
         parcel.writeString(datesStart)

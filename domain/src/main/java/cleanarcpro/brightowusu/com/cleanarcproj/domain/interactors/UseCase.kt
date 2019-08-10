@@ -1,12 +1,12 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors
 
-import io.reactivex.Observable
+import kotlinx.coroutines.CoroutineScope
 
 /**
  * UseCase
  * Created by Bright Owusu-Amankwaa
  */
-interface UseCase<T> {
-    // Strategy Pattern - try to be as granular as possible. Just execute().
-    fun execute(): Observable<T>
+interface UseCase<T,Error> {
+
+    suspend fun execute(scope: CoroutineScope) : Pair<T?, Error?>
 }

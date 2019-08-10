@@ -2,9 +2,9 @@ package cleanarcpro.brightowusu.com.cleanarcproj.domain.interactors
 
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.models.DomainUser
 
-interface IGetUserInteractor : UseCase<DomainUser> {
+interface IGetUserInteractor : UseCase<DomainUser?, Exception?> {
 
-    fun setUserId(userId: Int)
+    fun setUserId(userId: Long)
 
 }
 

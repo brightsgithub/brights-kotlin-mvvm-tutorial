@@ -2,14 +2,20 @@ package cleanarcpro.brightowusu.com.cleanarcproj.data.repository.mappers
 
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainPastExperience
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.DomainPastExperiences
+import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.EntityPastExperience
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.EntityPastExperiences
 
 class MapPastExperiencesEntityToDomain {
 
     companion object {
+
         fun transform(entityPastExperiences: EntityPastExperiences) : DomainPastExperiences{
+            return transform(entityPastExperiences.pastExperiences)
+        }
+
+        fun transform(pastExperiences: List<EntityPastExperience>) : DomainPastExperiences{
             val list = ArrayList<DomainPastExperience>()
-            entityPastExperiences.pastExperiences.forEach {
+            pastExperiences.forEach {
 
                 val pastExp = DomainPastExperience(
                         it.id,

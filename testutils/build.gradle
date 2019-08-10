@@ -6,23 +6,21 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
 
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
     buildTypes {
-
-        def localhost = "http://localhost:8080"
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -30,27 +28,28 @@ android {
 
         debug {
             signingConfig signingConfigs.debug
-            buildConfigField 'String', 'BASE_URL', '"https://raw.githubusercontent.com/brightsgithub/"'
-        }
-
-        mockserver {
-            debuggable = true
-            minifyEnabled false
-            signingConfig signingConfigs.debug
-            buildConfigField 'String', 'BASE_URL', "\"${localhost}\""
         }
     }
 
+    flavorDimensions "version"
+    productFlavors {
+        prod {
+            dimension "version"
+        }
+        mockServer {
+            dimension "version"
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion
 
     // OkHttpMockServer
     implementation 'com.squareup.okhttp3:mockwebserver:3.8.1'

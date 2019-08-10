@@ -1,8 +1,8 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.view.fragments
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +13,9 @@ import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExp
 import cleanarcpro.brightowusu.com.cleanarcproj.di.components.DaggerFragmentPastExpComponent
 import cleanarcpro.brightowusu.com.cleanarcproj.di.modules.FragmentPastExpModule
 import cleanarcpro.brightowusu.com.cleanarcproj.listeners.OnItemClickListener
-import cleanarcpro.brightowusu.com.cleanarcproj.utils.AppNavigationUtil
 import cleanarcpro.brightowusu.com.cleanarcproj.view.adapters.PreviousExperiencesAdaptor
 import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.DisplayPastExperiencesViewModel
+import cleanarcpro.brightowusu.com.cleanarcproj.viewmodels.states.PastExperiencesViewState
 import kotlinx.android.synthetic.main.fragment_past_exp.*
 import kotlinx.android.synthetic.main.progress_layout.*
 import javax.inject.Inject
@@ -28,6 +28,7 @@ class FragmentPreviousExperiences : BaseFragment() {
     @Inject
     lateinit var viewModel: DisplayPastExperiencesViewModel
     lateinit var adapter : PreviousExperiencesAdaptor
+    var doesPastExpExist: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,10 +116,17 @@ class FragmentPreviousExperiences : BaseFragment() {
     private fun initPastExperienceObserver() {
         // When there is a data change i.e our view model calls setValue()
         // this will result in onChanged being called in this observer
-        viewModel.getLoadedPastExpLiveData().observe(
+        viewModel.getDisplayPastExperiencesViewState().observe(
                 this,
-                Observer { pastExpList ->
-                    displayPastExpList(pastExpList!!)
+                Observer { state ->
+
+                    when(state) {
+                        is PastExperiencesViewState.Success -> {
+                            displayPastExpList(state.pastExperiences)
+                        }
+                        is PastExperiencesViewState.PastExperiencesExists -> {doesPastExpExist = true}
+                        is PastExperiencesViewState.PastExperiencesDoesNotExist-> {doesPastExpExist = false}
+                    }
                 })
     }
 
@@ -145,5 +153,14 @@ class FragmentPreviousExperiences : BaseFragment() {
 
     override fun onBackPressedShouldWeCloseActivity() :Boolean {
         return false
+    }
+
+    override fun handleDeviceHasConnection() {
+        if(doesPastExpExist != null && !doesPastExpExist!!) {
+            loadPastExperiences()
+        }
+    }
+
+    override fun handleDeviceHasNoConnection() {
     }
 }

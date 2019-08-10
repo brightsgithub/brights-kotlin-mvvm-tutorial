@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import cleanarcpro.brightowusu.com.cleanarcproj.MainApplication
 import cleanarcpro.brightowusu.com.cleanarcproj.R
 import cleanarcpro.brightowusu.com.cleanarcproj.data.repository.models.UIPastExperience
@@ -76,4 +77,12 @@ class FragmentPreviousExpDetail : BaseFragment() {
     override fun onBackPressedShouldWeCloseActivity(): Boolean {
         return false
     }
+
+    override fun handleDeviceHasConnection() {
+
+    }
+
+    override fun handleDeviceHasNoConnection() {
+    }
+
 }

@@ -1,21 +1,21 @@
 package cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.usercv
 
-import android.support.test.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry
 import cleanarcpro.brightowusu.com.cleanarcproj.data.TestDependencies
 import cleanarcpro.brightowusu.com.cleanarcproj.data.mockservertests.fakeserver.FakeServer
 import cleanarcpro.brightowusu.com.cleanarcproj.domain.abstractions.repository.IUserRepository
 import junit.framework.Assert.assertFalse
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import javax.inject.Inject
 
 class GetUserDetailsRepositoryTest : FakeServer(){
 
 
     //@Inject
     lateinit var userRepository: IUserRepository
-    private val FAKE_USER_ID = 1
+    private val FAKE_USER_ID = 1L
 
     @Before
     fun init() {
@@ -29,38 +29,20 @@ class GetUserDetailsRepositoryTest : FakeServer(){
     }
 
     @Test
-    fun should_get_user() {
+    fun should_get_user() = runBlocking {
 
-        val testObserver = userRepository.getUser(FAKE_USER_ID).test()
+        val entityUserDetails = userRepository.getUser(FAKE_USER_ID)
 
-        testObserver.awaitTerminalEvent()  // wait for the response
-
-        val onNextEvents = testObserver.values()
-
-        val entityUserDetails = onNextEvents[0]
-
-        // Make sure onNext was called
-        testObserver.assertNoErrors()
-
-        assert("Bright Owusu-Amankwaa".equals(entityUserDetails.name))
-        assert("07402244442".equals(entityUserDetails.phone))
-        assert("brightsCodeSimple@gmail.com".equals(entityUserDetails.email))
+        assert("Bright Owusu-Amankwaa" == entityUserDetails.name)
+        assert("07402244442" == entityUserDetails.phone)
+        assert("brightsCodeSimple@gmail.com" == entityUserDetails.email)
     }
 
     @Test
-    fun should_show_error_when_ids_dont_match() {
+    fun should_show_error_when_ids_dont_match() = runBlocking{
 
-        val testObserver = userRepository.getUser(FAKE_USER_ID).test()
+    val entityUserDetails = userRepository.getUser(FAKE_USER_ID)
 
-        testObserver.awaitTerminalEvent()  // wait for the response
-
-        val onNextEvents = testObserver.values()
-
-        val entityUserDetails = onNextEvents[0]
-
-        // Make sure onNext was called
-        testObserver.assertNoErrors()
-
-        assertFalse(1000.equals(entityUserDetails.userId))
+        assertFalse(1000L == entityUserDetails.userId)
     }
 }

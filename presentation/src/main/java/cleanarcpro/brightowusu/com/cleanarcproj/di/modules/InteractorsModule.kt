@@ -34,15 +34,10 @@ class InteractorsModule {
 
     @Provides
     @ActivityScope
-    fun providesGetTopicsOfKnowledgeInteractor(userRepository: IUserRepository): IGetTopicsOfKnowledgeInteractor {
-        return GetTopicsOfKnowledgeUseCase(userRepository)
-    }
-
-    @Provides
-    @ActivityScope
     fun providesGetAboutUserInteractor(
             userInteractor: IGetUserInteractor,
             summaryInteractor: IGetProSummaryInteractor): IGetAboutUserInteractor {
         return GetAboutUserUseCase(summaryInteractor, userInteractor)
     }
+
 }
